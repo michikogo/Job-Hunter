@@ -6,7 +6,7 @@ const Home = () => {
     <div className="container">
       <div>
         <h1>Organize and schedule your job applications with us!</h1>
-        <img src={homeImage} alt="" className="home-image" width="600" />
+        <img src={homeImage} className="home-image" />
       </div>
       <div></div>
       <div className="home-register">
