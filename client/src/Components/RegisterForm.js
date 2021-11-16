@@ -13,6 +13,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordChecker, setPasswordChecker] = useState(false);
+  const [errorRegister, setErrorRegister] = useState(false);
 
   const registerUser = async (e) => {
     e.preventDefault();
@@ -42,10 +43,10 @@ const RegisterForm = () => {
       setEmailChecker(false);
     }
     if (
-      checkerFirstName &&
-      checkerLastName &&
-      emailChecker &&
-      passwordChecker
+      !checkerFirstName &&
+      !checkerLastName &&
+      !emailChecker &&
+      !passwordChecker
     ) {
       const name = firstName + " " + lastName;
       const createData = { name: name, email: email, password: password };
@@ -60,7 +61,9 @@ const RegisterForm = () => {
       console.log(data);
       if (data.status === "ok") {
         console.log("ok");
-        navigate("/login");
+        navigate("/dashboard");
+      } else {
+        setErrorRegister(true);
       }
     }
   };
@@ -68,6 +71,11 @@ const RegisterForm = () => {
   return (
     <div className="register-div">
       <h1>Create a Account</h1>
+      <div className="login-error">
+        <p className={errorRegister ? "error-message" : "error-message-hide"}>
+          Please use different email
+        </p>
+      </div>
       <form onSubmit={registerUser}>
         <div className="form-input">
           <label>First Name</label>
