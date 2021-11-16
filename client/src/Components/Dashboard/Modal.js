@@ -10,15 +10,15 @@ const Modal = ({ username, handleClose }) => {
   const [dateApplied, setDateApplied] = useState("");
   const [checkDateApplied, setCheckDateApplied] = useState(false);
   const [linkedAccounts, setLinkedAccounts] = useState("");
-  const [checkLinkedAccounts, setCheckLinkedAccounts] = useState(false);
   const [status, setStatus] = useState("");
   const [checkStatus, setCheckStatus] = useState(false);
 
   const checkMissing = () => {
+    console.log(status);
     if (companyName === "") {
       setCheckCompanyName(true);
     } else {
-      setCompanyName(false);
+      setCheckCompanyName(false);
     }
 
     if (role === "") {
@@ -39,12 +39,6 @@ const Modal = ({ username, handleClose }) => {
       setCheckDateApplied(false);
     }
 
-    if (linkedAccounts === "") {
-      setCheckLinkedAccounts(true);
-    } else {
-      setCheckLinkedAccounts(false);
-    }
-
     if (status === "") {
       setCheckStatus(true);
     } else {
@@ -60,7 +54,6 @@ const Modal = ({ username, handleClose }) => {
       !checkRole &&
       !checkLocation &&
       !checkDateApplied &&
-      !checkLinkedAccounts &&
       !checkStatus
     ) {
       const req = await fetch("http://localhost:5000/directory/contents", {
@@ -70,7 +63,6 @@ const Modal = ({ username, handleClose }) => {
           "x-access-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({
-          username,
           companyName,
           role,
           location,
@@ -84,6 +76,7 @@ const Modal = ({ username, handleClose }) => {
       if (data.status === "ok") {
         // setQuote(tempQuote);
         // setTempQuote("");
+        handleClose();
       } else {
         alert(data.error);
       }
@@ -139,45 +132,36 @@ const Modal = ({ username, handleClose }) => {
             Missing location
           </small>
         </div>
-        <div className="form-input">
+        <div className="form-input" style={{ paddingBottom: "15px" }}>
           <label>Date Applied</label>
           <input
             type="date"
             value={dateApplied}
             onChange={(e) => setDateApplied(e.target.value)}
           />
-          <div></div>
-          <small
-            className={
-              checkDateApplied ? "error-message" : "error-message-hide"
-            }
-          >
-            Missing Date Applied
-          </small>
         </div>
-        <div className="form-input">
+        <div className="form-input" style={{ paddingBottom: "15px" }}>
           <label>Linked Accounts</label>
           <input
             type="text"
             value={linkedAccounts}
             onChange={(e) => setLinkedAccounts(e.target.value)}
           />
-          <div></div>
-          <small
-            className={
-              checkLinkedAccounts ? "error-message" : "error-message-hide"
-            }
-          >
-            Missing No linked accounts
-          </small>
         </div>
         <div className="form-input">
           <label>Status</label>
-          <input
-            type="text"
+          <select
+            type="select"
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-          />
+          >
+            <option selected value=""></option>
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Technical Exam">Technical Exam</option>
+            <option value="Offer">Offer</option>
+            <option value="Rejected">Rejected</option>
+          </select>
           <div></div>
           <small
             className={checkStatus ? "error-message" : "error-message-hide"}

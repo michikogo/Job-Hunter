@@ -4,7 +4,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard";
+import Dashboard from "./Components/Dashboard/Dashboard";
 import Home from "./Components/Home";
 import Footer from "./Components/Footer";
 
@@ -18,6 +18,7 @@ const App = () => {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/!" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
       <Footer />

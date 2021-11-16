@@ -1,6 +1,5 @@
 import React from "react";
 import { homeImage } from "../Assets";
-import Register from "./Register";
 import RegisterForm from "./RegisterForm";
 const Home = () => {
   return (
