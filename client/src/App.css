@@ -19,10 +19,10 @@ input {
   border: 1px none;
 }
 .container {
-  padding: 4.85rem 8rem;
+  padding: 5rem 6rem;
   min-height: 60vh;
   display: grid;
-  grid-template-columns: 45% 10% 45%;
+  grid-template-columns: 30% 10% 60%;
 }
 /**************/
 /*** HEADER ***/
@@ -59,6 +59,7 @@ input {
 .home-register-text {
   padding: 1rem 0px;
   padding-top: 2rem;
+  text-align: center;
 }
 .home-image {
   position: absolute;
@@ -66,10 +67,34 @@ input {
   left: 0;
   width: 38vw;
 }
+@media (max-width: 600px) {
+  .container {
+    padding: 5rem 0.5rem;
+    grid-template-columns: none;
+  }
+  .home-image {
+    bottom: -16rem;
+  }
+}
+@media (min-width: 601px) and (max-width: 800px) {
+  .container {
+    padding: 5rem 2rem;
 
+    grid-template-columns: 40% 5% 55%;
+  }
+  .home-image {
+    bottom: -6rem;
+  }
+}
 /************/
 /* REGISTER */
 /************/
+.register-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  min-height: 79vh;
+  align-content: center;
+}
 .register-div {
   padding: 2rem;
   background: rgba(110, 164, 191, 0.5);
@@ -99,6 +124,7 @@ input {
 .register-question {
   text-align-last: center;
   font-weight: bolder;
+  padding-top: 1.5rem;
 }
 .error-message-hide {
   visibility: hidden;
@@ -109,4 +135,20 @@ input {
   color: red;
   text-align: center;
   padding-bottom: 5px;
+}
+
+/*************/
+/*** LOGIN ***/
+/*************/
+.character15-image {
+  position: absolute;
+  bottom: 8vw;
+  right: 0;
+  width: 16vw;
+}
+.character18-image {
+  position: absolute;
+  bottom: 8vw;
+  left: 0;
+  width: 20vw;
 }
