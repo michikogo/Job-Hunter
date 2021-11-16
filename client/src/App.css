@@ -22,7 +22,7 @@ input {
   padding: 5rem 6rem;
   min-height: 60vh;
   display: grid;
-  grid-template-columns: 30% 10% 60%;
+  grid-template-columns: 40% 10% 50%;
 }
 /**************/
 /*** HEADER ***/
@@ -63,17 +63,23 @@ input {
 }
 .home-image {
   position: absolute;
-  bottom: -19px;
+  bottom: -40px;
   left: 0;
-  width: 38vw;
+  width: 25rem;
 }
 @media (max-width: 600px) {
   .container {
-    padding: 5rem 0.5rem;
+    padding: 3rem 0.5rem;
     grid-template-columns: none;
   }
   .home-image {
-    bottom: -16rem;
+    content-visibility: hidden;
+  }
+  .home-register-text {
+    padding-top: 0px;
+  }
+  h1 {
+    padding-top: 10px;
   }
 }
 @media (min-width: 601px) and (max-width: 800px) {
@@ -151,6 +157,14 @@ input {
   bottom: 72px;
   left: 0;
   width: 13rem;
+}
+@media (max-width: 400px) {
+  .register-div {
+    padding: 1.5rem;
+  }
+  .form-input {
+    grid-template-columns: 5rem auto;
+  }
 }
 @media (max-width: 600px) {
   .register-grid {

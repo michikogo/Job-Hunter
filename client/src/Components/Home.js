@@ -1,6 +1,7 @@
 import React from "react";
 import { homeImage } from "../Assets";
 import Register from "./Register";
+import RegisterForm from "./RegisterForm";
 const Home = () => {
   return (
     <div className="container">
@@ -13,7 +14,7 @@ const Home = () => {
         <h3 className="home-register-text">
           Sign up now! We love to help you organize your job applications.
         </h3>
-        <Register />
+        <RegisterForm />
       </div>
     </div>
   );
