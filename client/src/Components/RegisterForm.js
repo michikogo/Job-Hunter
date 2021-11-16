@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 const RegisterForm = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
+  const [checkerFirstName, setCheckerFirstName] = useState(false);
   const [lastName, setLastName] = useState("");
+  const [checkerLastName, setCheckerLastName] = useState(false);
   const [email, setEmail] = useState("");
   const [emailChecker, setEmailChecker] = useState(false);
   const [password, setPassword] = useState("");
@@ -15,10 +17,21 @@ const RegisterForm = () => {
   const registerUser = async (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
+    if (firstName === "") {
+      setCheckerFirstName(true);
+    } else {
+      setCheckerFirstName(false);
+    }
+    if (lastName === "") {
+      setCheckerLastName(true);
+    } else {
+      setCheckerLastName(false);
+    }
+
+    if (password !== confirmPassword || password === "") {
       setPasswordChecker(true);
     } else {
-      setEmailChecker(false);
+      setPasswordChecker(false);
     }
     const re =
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -28,21 +41,27 @@ const RegisterForm = () => {
     } else {
       setEmailChecker(false);
     }
-    const name = firstName + " " + lastName;
-    const createData = { name: name, email: email, password: password };
-    const response = await fetch("http://localhost:5000/user/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(createData),
-    });
-
-    const data = await response.json();
-    console.log(data);
-    if (data.status === "ok") {
-      console.log("ok");
-      navigate("/login");
+    if (
+      checkerFirstName &&
+      checkerLastName &&
+      emailChecker &&
+      passwordChecker
+    ) {
+      const name = firstName + " " + lastName;
+      const createData = { name: name, email: email, password: password };
+      const response = await fetch("http://localhost:5000/user/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(createData),
+      });
+      const data = await response.json();
+      console.log(data);
+      if (data.status === "ok") {
+        console.log("ok");
+        navigate("/login");
+      }
     }
   };
 
@@ -50,21 +69,33 @@ const RegisterForm = () => {
     <div className="register-div">
       <h1>Create a Account</h1>
       <form onSubmit={registerUser}>
-        <div className="form-input form-input-padding">
+        <div className="form-input">
           <label>First Name</label>
           <input
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
+          <div></div>
+          <small
+            className={emailChecker ? "error-message" : "error-message-hide"}
+          >
+            Missing First Name
+          </small>
         </div>
-        <div className="form-input form-input-padding">
+        <div className="form-input">
           <label>Last Name</label>
           <input
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
+          <div></div>
+          <small
+            className={emailChecker ? "error-message" : "error-message-hide"}
+          >
+            Missing Last Name
+          </small>
         </div>
         <div className="form-input">
           <label>Email Address</label>
@@ -91,7 +122,7 @@ const RegisterForm = () => {
           <small
             className={passwordChecker ? "error-message" : "error-message-hide"}
           >
-            Password does not match
+            Empty or not matched password
           </small>
         </div>
         <div className="form-input">
@@ -105,7 +136,7 @@ const RegisterForm = () => {
           <small
             className={passwordChecker ? "error-message" : "error-message-hide"}
           >
-            Password does not match
+            Empty or not matched password
           </small>
         </div>
         <div className="register-button-div">
