@@ -47,86 +47,78 @@ const RegisterForm = () => {
   };
 
   return (
-    <>
-      <div></div>
-      <div className="register-div">
-        <h1>Create a Account</h1>
-        <form onSubmit={registerUser}>
-          <div className="form-input form-input-padding">
-            <label>First Name</label>
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </div>
-          <div className="form-input form-input-padding">
-            <label>Last Name</label>
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <div className="form-input">
-            <label>Email Address</label>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <div></div>
-            <small
-              className={emailChecker ? "error-message" : "error-message-hide"}
-            >
-              Not a valid email
-            </small>
-          </div>
-          <div className="form-input">
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <div></div>
-            <small
-              className={
-                passwordChecker ? "error-message" : "error-message-hide"
-              }
-            >
-              Password does not match
-            </small>
-          </div>
-          <div className="form-input">
-            <label>Confirm Password</label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            <div></div>
-            <small
-              className={
-                passwordChecker ? "error-message" : "error-message-hide"
-              }
-            >
-              Password does not match
-            </small>
-          </div>
-          <div className="register-button-div">
-            <input type="submit" value="Register" className="register-button" />
-          </div>
-        </form>
-        <div className="register-question">
-          <p>Have a account?</p>
-          <p>
-            <a href="/login">Lets Login</a>
-          </p>
+    <div className="register-div">
+      <h1>Create a Account</h1>
+      <form onSubmit={registerUser}>
+        <div className="form-input form-input-padding">
+          <label>First Name</label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
         </div>
+        <div className="form-input form-input-padding">
+          <label>Last Name</label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+        <div className="form-input">
+          <label>Email Address</label>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <div></div>
+          <small
+            className={emailChecker ? "error-message" : "error-message-hide"}
+          >
+            Not a valid email
+          </small>
+        </div>
+        <div className="form-input">
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div></div>
+          <small
+            className={passwordChecker ? "error-message" : "error-message-hide"}
+          >
+            Password does not match
+          </small>
+        </div>
+        <div className="form-input">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <div></div>
+          <small
+            className={passwordChecker ? "error-message" : "error-message-hide"}
+          >
+            Password does not match
+          </small>
+        </div>
+        <div className="register-button-div">
+          <input type="submit" value="Register" className="register-button" />
+        </div>
+      </form>
+      <div className="register-question">
+        <p>Have an account?</p>
+        <p>
+          <a href="/login">Lets Login</a>
+        </p>
       </div>
-      <div></div>
-    </>
+    </div>
   );
 };
 

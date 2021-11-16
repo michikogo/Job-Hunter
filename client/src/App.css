@@ -91,7 +91,7 @@ input {
 /************/
 .register-grid {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto 40rem auto;
   min-height: 79vh;
   align-content: center;
 }
@@ -105,7 +105,7 @@ input {
 }
 .form-input {
   display: grid;
-  grid-template-columns: 10rem auto;
+  grid-template-columns: 8rem auto;
   /* padding-bottom: 15px; */
 }
 .register-button-div {
@@ -142,13 +142,30 @@ input {
 /*************/
 .character15-image {
   position: absolute;
-  bottom: 8vw;
+  bottom: 72px;
   right: 0;
-  width: 16vw;
+  width: 10rem;
 }
 .character18-image {
   position: absolute;
-  bottom: 8vw;
+  bottom: 72px;
   left: 0;
-  width: 20vw;
+  width: 13rem;
+}
+@media (max-width: 600px) {
+  .register-grid {
+    grid-template-columns: auto auto auto;
+  }
+  .character18-image {
+    content-visibility: hidden;
+  }
+  .character15-image {
+    z-index: -1;
+  }
+}
+@media (min-width: 601px) and (max-width: 894px) {
+  .character15-image,
+  .character18-image {
+    z-index: -1;
+  }
 }
