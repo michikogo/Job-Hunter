@@ -4,8 +4,13 @@ import { logo } from "../Assets/index.js";
 const Header = () => {
   return (
     <div className="header-div">
-      <img src={logo} alt="" className="header-image" />
-      <p className="header-login">Login</p>
+      <a href="/">
+        <img src={logo} alt="" className="header-image" />
+      </a>
+
+      <a href="/login" className="header-login">
+        Login
+      </a>
     </div>
   );
 };

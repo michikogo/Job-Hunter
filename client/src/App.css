@@ -41,6 +41,7 @@ input {
   align-self: center;
   text-align: end;
   cursor: pointer;
+  text-decoration: none;
 }
 .header-login:hover {
   font-weight: bolder;
