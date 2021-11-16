@@ -16,9 +16,10 @@ router.route("/contents").get(async (req, res) => {
 
     const userContent = await DirectoryModel.find({ email: email });
 
+    console.log(user);
     return res.json({
       status: "ok",
-      quote: user.quote,
+      name: user.name,
       email: user.email,
       content: userContent,
     });

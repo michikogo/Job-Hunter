@@ -92,6 +92,7 @@ input {
 }
 .register-button-div {
   text-align: end;
+  padding: 10px 0px;
 }
 .register-button {
   padding: 0.5rem 2rem;
@@ -138,6 +139,29 @@ input {
   padding-bottom: 20px;
 }
 
+/***********/
+/* DASHBOARD */
+/*************/
+.dashboard-container {
+  padding: 5rem 6rem;
+  min-height: 59.5vh;
+  /* background-color: rgba(110, 164, 191, 0.5); */
+}
+/*********/
+/* MODAL */
+/*********/
+.modal-container {
+  display: block;
+  padding: 5rem 6rem;
+  background-color: rgb(154, 210, 236);
+  border-radius: 5px;
+  margin: 0px 15vw;
+}
+.modal-close {
+  text-align-last: end;
+  cursor: pointer;
+  font-weight: bold;
+}
 @media (max-width: 400px) {
   .register-div {
     padding: 1.5rem;
@@ -173,7 +197,6 @@ input {
 @media (min-width: 601px) and (max-width: 900px) {
   .container {
     padding: 5rem 2rem;
-
     grid-template-columns: 40% 5% 55%;
   }
   .home-image {

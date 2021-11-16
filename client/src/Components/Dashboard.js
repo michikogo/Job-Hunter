@@ -2,133 +2,86 @@ import React, { useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
 // useHistory became useNavigate
 import { useNavigate } from "react-router-dom";
+import Modal from "./Modal";
 
 const Dashboard = () => {
   const naviage = useNavigate();
   const [username, setUsername] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [role, setRole] = useState("");
-  const [location, setLocation] = useState("");
-  const [dateApplied, setDateApplied] = useState("");
-  const [linkedAccounts, setLinkedAccounts] = useState("");
-  const [status, setStatus] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const populateQuote = async () => {
     const request = await fetch("http://localhost:5000/directory/contents", {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data1) => {
-        console.log("data");
-        console.log(data1);
-      });
-
-    // const data = await request.json();
-    // console.log("here");
-    // console.log(data);
-
-    // if (data.status === "ok") {
-    //   setUsername(data.email);
-    // } else {
-    //   alert(data.error);
-    // }
-  };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const user = jwt.decode(token);
-      if (!user) {
-        localStorage.removeItem("token");
-        naviage("/login");
-      } else {
-        populateQuote();
-      }
-    } else {
-      naviage("/login");
-    }
-  }, []);
-
-  const updateCode = async (e) => {
-    e.preventDefault();
-
-    const req = await fetch("http://localhost:5000/directory/contents", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-access-token": localStorage.getItem("token"),
-      },
-      body: JSON.stringify({
-        username,
-        companyName,
-        role,
-        location,
-        dateApplied,
-        linkedAccounts,
-        status,
-      }),
     });
 
-    const data = await req.json();
+    const data = await request.json();
+    console.log("here");
+    console.log(data);
+
     if (data.status === "ok") {
-      // setQuote(tempQuote);
-      // setTempQuote("");
+      setUsername(data.name);
     } else {
       alert(data.error);
     }
   };
 
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     const user = jwt.decode(token);
+  //     if (!user) {
+  //       localStorage.removeItem("token");
+  //       naviage("/login");
+  //     } else {
+  //       populateQuote();
+  //     }
+  //   } else {
+  //     naviage("/login");
+  //   }
+  // }, []);
+
+  const handleShow = () => {
+    setShowModal(true);
+  };
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
   return (
-    <div>
+    <div className="dashboard-container">
       <p>Hello {username}</p>
-      <form onSubmit={updateCode}>
+      <div className="register-button-div">
         <input
-          type="text"
-          placeholder="Quote"
-          value={companyName}
-          onChange={(e) => setCompanyName(e.target.value)}
+          type="submit"
+          value="Add Application"
+          className="register-button"
+          onClick={handleShow}
         />
-        <br />
-        <input
-          type="text"
-          placeholder="Quote"
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Quote"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Quote"
-          value={dateApplied}
-          onChange={(e) => setDateApplied(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Quote"
-          value={linkedAccounts}
-          onChange={(e) => setLinkedAccounts(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          placeholder="Quote"
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
-        />
-        <input type="submit" value="update quote" />
-      </form>
+      </div>
+      <div>
+        <div style={{ position: "block" }}>
+          {showModal && <Modal username={username} handleClose={handleClose} />}
+        </div>
+        <div style={{ position: "block" }}>
+          <p>
+            Michiko's Org - 2021-02-17 Settings Access Manager Billing All
+            Clusters Get Help Michiko Directory Atlas Realm Charts DEPLOYMENT
+            Databases Triggers Data Lake SECURITY Database Access Network Access
+            Advanced MICHIKO'S ORG - 2021-02-17 > DIRECTORY > DATABASES
+            UserSchema VERSION 4.4.10 REGION AWS N. Virginia (us-east-1)
+            Overview Real Time Metrics Collections Search Profiler Performance
+            Advisor Online Archive Command Line Tools DATABASES: 1 COLLECTIONS:
+            2 VISUALIZE YOUR DATA REFRESH Create Database NAMESPACES
+            directory-schema directory-data user-data directory-schema.user-data
+            COLLECTION SIZE: 625B TOTAL DOCUMENTS: 4 INDEXES TOTAL SIZE: 72KB
+            Find Indexes Schema Anti-Patterns 0 Aggregation Search Indexes
+            INSERT DOCUMENT FILTER    QUERY RESULTS 0 System StatusAll Good
+            ©2021 MongoDB, Inc.StatusTermsPrivacyAtlas BlogContact Sales
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
