@@ -41,11 +41,13 @@ input {
   align-self: center;
   text-align: end;
   cursor: pointer;
-  text-decoration: none;
 }
 .header-login:hover {
   font-weight: bolder;
   color: #3f4d79;
+}
+.header-login-link {
+  text-decoration: none;
 }
 
 /**************/
