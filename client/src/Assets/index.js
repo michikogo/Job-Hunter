@@ -6,6 +6,7 @@ import trash from "./trash.png";
 import trashHover from "./trashHover.png";
 import edit from "./edit.png";
 import editHover from "./editHover.png";
+import inbox from "./inbox.png";
 
 export {
   logo,
@@ -16,4 +17,5 @@ export {
   trashHover,
   edit,
   editHover,
+  inbox,
 };

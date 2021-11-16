@@ -1,0 +1,42 @@
+/*************/
+/* DASHBOARD */
+/*************/
+.dashboard-container {
+  padding: 4rem 3rem;
+  min-height: 63.4vh;
+  /* background-color: rgba(110, 164, 191, 0.5); */
+}
+.dashboard-hide-modal {
+  position: absolute;
+  z-index: -1;
+}
+.dashboard-background {
+  width: 100%;
+  margin-top: 3rem;
+  background-color: #ecfee8;
+  border-radius: 5px;
+  text-align: -webkit-center;
+}
+.dashboard-table {
+  width: 100%;
+  padding: 2rem;
+}
+.dashboard-edit {
+  width: 1rem;
+  cursor: pointer;
+}
+.dashboard-trash {
+  width: 1rem;
+  cursor: pointer;
+}
+/*************/
+/*** MODAL ***/
+/*************/
+
+/**************/
+/* PAGINATION */
+/**************/
+
+/*************/
+/*** TABLE ***/
+/*************/

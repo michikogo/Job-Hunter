@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import jwt from "jsonwebtoken";
 import { useNavigate } from "react-router-dom";
+import jwt from "jsonwebtoken";
+import "./index.css";
 import Modal from "./Modal";
 import Table from "./Table";
 import Pagination from "./Pagination";
+import { inbox } from "../../Assets";
 
 const Dashboard = () => {
   const naviage = useNavigate();
@@ -21,10 +23,10 @@ const Dashboard = () => {
         "x-access-token": localStorage.getItem("token"),
       },
     });
-
     const data = await request.json();
     console.log("here");
     console.log(data);
+
     setUserData(data.content);
     if (data.status === "ok") {
       setUsername(data.name);
@@ -40,6 +42,7 @@ const Dashboard = () => {
     console.log(data[i]);
     setPickedQuote(data[i]);
   };
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -117,20 +120,30 @@ const Dashboard = () => {
               : "dashboard-background "
           }
         >
-          <Table userData={currentPosts} />
-        </div>
-        <div
-          style={{
-            textAlign: "center",
-            backgroundColor: "#ecfee8",
-            borderRadius: "5px",
-          }}
-        >
-          <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={userData.length}
-            paginate={paginate}
-          />
+          {userData.length ? (
+            <>
+              <Table userData={currentPosts} />
+              <div
+                style={{
+                  textAlign: "center",
+                  backgroundColor: "#ecfee8",
+                  borderRadius: "5px",
+                }}
+              >
+                <Pagination
+                  postsPerPage={postsPerPage}
+                  totalPosts={userData.length}
+                  paginate={paginate}
+                />
+              </div>
+            </>
+          ) : (
+            <div style={{ padding: "10rem 0rem" }}>
+              <img src={inbox} width="100" />
+              <br />
+              <small>Start Applying</small>
+            </div>
+          )}
         </div>
       </div>
     </div>
