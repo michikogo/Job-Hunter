@@ -40,6 +40,9 @@ select {
   display: grid;
   grid-template-columns: 40% 10% 50%;
 }
+h2 {
+  margin: 0px;
+}
 /**************/
 /*** HEADER ***/
 /**************/
@@ -177,13 +180,13 @@ th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04aa6d;
+  background-color: #6ea4bf;
   color: white;
 }
 
 .dashboard-container {
   padding: 4rem 3rem;
-  min-height: 59.5vh;
+  min-height: 63.4vh;
   /* background-color: rgba(110, 164, 191, 0.5); */
 }
 .dashboard-hide-modal {
@@ -193,7 +196,6 @@ th {
 .dashboard-background {
   width: 100%;
   margin-top: 3rem;
-  height: 20rem;
   background-color: #ecfee8;
   border-radius: 5px;
   text-align: -webkit-center;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
-// useHistory became useNavigate
 import { useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import Table from "./Table";
@@ -10,10 +9,11 @@ const Dashboard = () => {
   const naviage = useNavigate();
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(false);
+  const [pickedQuote, setPickedQuote] = useState([]);
 
   const [userData, setUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(6);
+  const [postsPerPage] = useState(10);
 
   const populateQuote = async () => {
     const request = await fetch("http://localhost:5000/directory/contents", {
@@ -33,6 +33,13 @@ const Dashboard = () => {
     }
   };
 
+  const dailyQuote = async () => {
+    const response = await fetch("https://type.fit/api/quotes");
+    var data = await response.json();
+    const i = Math.floor(Math.random() * data.length);
+    console.log(data[i]);
+    setPickedQuote(data[i]);
+  };
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -42,6 +49,7 @@ const Dashboard = () => {
         naviage("/login");
       } else {
         populateQuote();
+        dailyQuote();
       }
     } else {
       naviage("/login");
@@ -73,22 +81,31 @@ const Dashboard = () => {
           : "dashboard-container"
       }
     >
-      <h2 className={showModal && "modal-hide"}>Hello {username}</h2>
-      <div
-        // className="register-button-div"
-        className={
-          showModal ? "register-button-div modal-hidden" : "register-button-div"
-        }
-      >
-        <input
-          type="submit"
-          value="Add Application"
-          className={
-            showModal ? "modal-hide register-button" : "register-button"
-          }
-          onClick={handleShow}
-        />
+      <div style={{ display: "grid", gridTemplateColumns: " auto auto" }}>
+        <h2 className={showModal && "modal-hide"}>Hello {username}</h2>
+        <div style={{ textAlign: "right" }}>
+          <input
+            type="submit"
+            value="Add Application"
+            className={
+              showModal ? "modal-hide register-button" : "register-button"
+            }
+            onClick={handleShow}
+          />
+        </div>
       </div>
+      {pickedQuote && (
+        <div style={{ padding: "0px 10rem", paddingTop: "2rem" }}>
+          <div>
+            Remember <i>{pickedQuote.author}</i> once said:
+          </div>
+          <div style={{ textAlign: "center", paddingLeft: "10px" }}>
+            <h4>{pickedQuote.text}</h4>
+          </div>
+          <div>Good Luck! You got this!</div>
+        </div>
+      )}
+
       <div style={{ position: "relative" }}>
         <div className="modal-position">
           {showModal && <Modal username={username} handleClose={handleClose} />}
