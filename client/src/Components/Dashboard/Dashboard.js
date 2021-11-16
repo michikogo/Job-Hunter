@@ -13,7 +13,7 @@ const Dashboard = () => {
 
   const [userData, setUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(6);
 
   const populateQuote = async () => {
     const request = await fetch("http://localhost:5000/directory/contents", {
@@ -102,7 +102,13 @@ const Dashboard = () => {
         >
           <Table userData={currentPosts} />
         </div>
-        <div style={{ textAlign: "center" }}>
+        <div
+          style={{
+            textAlign: "center",
+            backgroundColor: "#ecfee8",
+            borderRadius: "5px",
+          }}
+        >
           <Pagination
             postsPerPage={postsPerPage}
             totalPosts={userData.length}

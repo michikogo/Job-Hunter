@@ -15,12 +15,12 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
           <li
             key={number}
             className={currentNumber === number && "pagination-active"}
+            onClick={() => {
+              paginate(number);
+              setCurrentNumber(number);
+            }}
           >
             <a
-              onClick={() => {
-                paginate(number);
-                setCurrentNumber(number);
-              }}
               href="/dashboard/!#"
               className={currentNumber === number && "pagination-active"}
             >
