@@ -1,38 +1,108 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+body {
+  font-family: "Work Sans", sans-serif;
+}
+p {
+  margin: 0px !important;
+}
+h1 {
+  margin: 0px !important;
   text-align: center;
+  padding-bottom: 25px;
+}
+label {
+  align-self: center;
+}
+input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px none;
+}
+.container {
+  padding: 4.85rem 8rem;
+  min-height: 60vh;
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+}
+/**************/
+/*** HEADER ***/
+/**************/
+.header-div {
+  background: #c2efeb;
+  height: 8vh;
+  padding: 10px 8vh;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.header-image {
+  height: 8vh;
+}
+.header-login {
+  align-self: center;
+  text-align: end;
+  cursor: pointer;
+}
+.header-login:hover {
+  font-weight: bolder;
+  color: #3f4d79;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/**************/
+/**** HOME ****/
+/**************/
+.home-register {
+  align-self: end;
+}
+.home-register-text {
+  padding: 1rem 0px;
+  padding-top: 2rem;
+}
+.home-image {
+  position: absolute;
+  bottom: -19px;
+  left: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/************/
+/* REGISTER */
+/************/
+.register-div {
+  padding: 2rem;
+  background: rgba(110, 164, 191, 0.5);
+  border-radius: 5px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.form-input-padding {
+  padding-bottom: 20px;
+}
+.form-input {
+  display: grid;
+  grid-template-columns: 10rem auto;
+  /* padding-bottom: 15px; */
+}
+.register-button-div {
+  text-align: end;
+}
+.register-button {
+  padding: 0.5rem 2rem;
+  background-color: #3f4d79;
   color: white;
+  cursor: pointer;
 }
-
-.App-link {
-  color: #61dafb;
+.register-button:hover {
+  background-color: #7089db;
+  color: black;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.register-question {
+  text-align-last: center;
+  font-weight: bolder;
+}
+.error-message-hide {
+  visibility: hidden;
+  padding-bottom: 5px;
+}
+.error-message {
+  visibility: visible;
+  color: red;
+  text-align: center;
+  padding-bottom: 5px;
 }
