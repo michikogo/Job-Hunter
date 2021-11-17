@@ -1,14 +1,15 @@
-import { character15, character18 } from "../Assets";
-import RegisterForm from "./RegisterForm";
+import { character15, character18 } from "../../Assets";
+import LoginForm from "./LoginForm";
+import "./index.css";
 
-const Register = () => {
+const Login = () => {
   return (
     <div className="register-grid">
       <div>
         <img src={character18} alt="" className="character18-image" />
       </div>
       <div>
-        <RegisterForm />
+        <LoginForm />
       </div>
       <div>
         <img src={character15} alt="" className="character15-image" />
@@ -17,4 +18,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

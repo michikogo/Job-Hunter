@@ -1,6 +1,7 @@
 .header-container {
   background-color: #e7dfe8;
   padding: 1rem 3rem;
+  min-height: 3rem;
 }
 .header-grid {
   display: grid;

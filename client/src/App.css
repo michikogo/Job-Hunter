@@ -10,3 +10,20 @@ a:hover {
   font-weight: bold;
   text-decoration: none;
 }
+
+/**********/
+/**********/
+/** HOME **/
+/**********/
+/**********/
+.home-container {
+  display: grid;
+  grid-template-columns: 45% 10% 45%;
+  padding: 5rem;
+}
+.home-image {
+  position: absolute;
+  width: 30rem;
+  bottom: 4rem;
+  left: 0;
+}

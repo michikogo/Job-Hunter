@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 // useHistory became useNavigate
 import { useNavigate } from "react-router-dom";
+import "./index.css";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
