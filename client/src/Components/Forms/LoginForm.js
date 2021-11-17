@@ -46,8 +46,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="register-div">
-      <h1>Login</h1>
+    <div className="register-container">
+      <h1 style={{ textAlign: "center" }}>Login</h1>
       <div className="login-error">
         <p className={errorLogin ? "error-message" : "error-message-hide"}>
           Please check email and password
@@ -55,10 +55,11 @@ const LoginForm = () => {
       </div>
       <form onSubmit={loginUser}>
         <div className="form-input">
-          <label>Email</label>
+          <label className="register-label">Email</label>
           <input
             type="text"
             value={email}
+            className="register-input"
             onChange={(e) => setEmail(e.target.value)}
           />
           <div></div>
@@ -69,10 +70,11 @@ const LoginForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label>Password</label>
+          <label className="register-label">Password</label>
           <input
             type="password"
             value={password}
+            className="register-input"
             onChange={(e) => setPassword(e.target.value)}
           />
           <div></div>
@@ -82,13 +84,13 @@ const LoginForm = () => {
             Missing password
           </small>
         </div>
-        <div className="register-button-div">
-          <input type="submit" value="Login" className="register-button" />
+        <div className="register-button">
+          <input type="submit" value="Login" className="custom-button" />
         </div>
       </form>
       <div className="register-question">
-        <p>Do not have an account?</p>
-        <p>
+        <p style={{ marginBottom: "0px" }}>Do not have an account?</p>
+        <p className="register-redirect">
           <a href="/register">Lets Sign Up</a>
         </p>
       </div>

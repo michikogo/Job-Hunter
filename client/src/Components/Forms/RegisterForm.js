@@ -70,19 +70,22 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="register-div">
-      <h1>Create a Account</h1>
+    <div className="register-container">
+      <h1 style={{ textAlign: "center" }}>Create a Account</h1>
+      {/* ERROR MESSAGE */}
       <div className="login-error">
         <p className={errorRegister ? "error-message" : "error-message-hide"}>
           Please use different email
         </p>
       </div>
+      {/* FORM */}
       <form onSubmit={registerUser}>
         <div className="form-input">
-          <label>First Name</label>
+          <label className="register-label">First Name</label>
           <input
             type="text"
             value={firstName}
+            className="register-input"
             onChange={(e) => setFirstName(e.target.value)}
           />
           <div></div>
@@ -93,10 +96,11 @@ const RegisterForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label>Last Name</label>
+          <label className="register-label">Last Name</label>
           <input
             type="text"
             value={lastName}
+            className="register-input"
             onChange={(e) => setLastName(e.target.value)}
           />
           <div></div>
@@ -107,10 +111,11 @@ const RegisterForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label>Email Address</label>
+          <label className="register-label">Email Address</label>
           <input
             type="text"
             value={email}
+            className="register-input"
             onChange={(e) => setEmail(e.target.value)}
           />
           <div></div>
@@ -121,10 +126,11 @@ const RegisterForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label>Password</label>
+          <label className="register-label">Password</label>
           <input
             type="password"
             value={password}
+            className="register-input"
             onChange={(e) => setPassword(e.target.value)}
           />
           <div></div>
@@ -135,10 +141,11 @@ const RegisterForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label>Confirm Password</label>
+          <label className="register-label">Confirm Password</label>
           <input
             type="password"
             value={confirmPassword}
+            className="register-input"
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <div></div>
@@ -148,13 +155,13 @@ const RegisterForm = () => {
             Empty or not matched password
           </small>
         </div>
-        <div className="register-button-div">
-          <input type="submit" value="Register" className="register-button" />
+        <div className="register-button">
+          <input type="submit" value="Register" className="custom-button" />
         </div>
       </form>
       <div className="register-question">
-        <p>Have an account?</p>
-        <p>
+        <p style={{ marginBottom: "0px" }}>Have an account?</p>
+        <p className="register-redirect">
           <a href="/login">Lets Login</a>
         </p>
       </div>

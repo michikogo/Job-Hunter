@@ -2,7 +2,6 @@
 body {
   font-family: "Work Sans", sans-serif;
 }
-
 a {
   text-decoration: none;
 }
@@ -10,20 +9,52 @@ a:hover {
   font-weight: bold;
   text-decoration: none;
 }
-
+.custom-button {
+  background: #92898a;
+  border-radius: 5px;
+  border: 1px;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+.custom-button:hover {
+  background: #af9fa5;
+  color: black;
+  box-shadow: 2px 2px #92898a;
+}
 /**********/
 /**********/
 /** HOME **/
 /**********/
 /**********/
 .home-container {
-  display: grid;
-  grid-template-columns: 45% 10% 45%;
+  display: inline-flex;
   padding: 5rem;
 }
 .home-image {
   position: absolute;
   width: 30rem;
-  bottom: 4rem;
+  bottom: -10vh;
   left: 0;
 }
+.home-form {
+  padding-top: 5rem;
+}
+
+@media (max-width: 941px) {
+  h1 {
+    text-align: center;
+  }
+  .home-container {
+    display: block;
+  }
+  .home-image {
+    visibility: hidden;
+  }
+  .home-form {
+    padding-top: 2rem;
+    text-align: center;
+  }
+}
+
+/* @media (max-width: 1440px) and (max-width: 1450px); */

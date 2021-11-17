@@ -9,8 +9,8 @@ const Home = () => {
         <img src={homeImage} className="home-image" />
       </div>
       <div></div>
-      <div style={{ paddingTop: "5rem" }}>
-        <h3>
+      <div>
+        <h3 className="home-form">
           Sign up now! We love to help you organize your job applications.
         </h3>
         <RegisterForm />

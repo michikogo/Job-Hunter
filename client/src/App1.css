@@ -128,16 +128,6 @@ h2 {
   font-weight: bolder;
   padding-top: 1.5rem;
 }
-.error-message-hide {
-  visibility: hidden;
-  padding-bottom: 5px;
-}
-.error-message {
-  visibility: visible;
-  color: red;
-  text-align: center;
-  padding-bottom: 5px;
-}
 
 /*************/
 /*** LOGIN ***/
