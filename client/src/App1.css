@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+body {
+  font-family: "Work Sans", sans-serif;
+}
+ul {
+  padding: 0px;
+  display: inline-flex;
+  list-style-type: none;
+  border: lightslategrey 1px solid;
+  border-radius: 5px;
+}
+li {
+  padding: 0.2rem 0.8rem;
+  border: lightslategrey 1px solid;
+  background-color: lightsteelblue;
+}
+a {
+  text-decoration: none;
+}
+p {
+  margin: 0px !important;
+}
+h1 {
+  margin: 0px !important;
+  text-align: center;
+  padding-bottom: 25px;
+}
+label {
+  align-self: center;
+}
+input,
+select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px none;
+}
+.container {
+  padding: 5rem 6rem;
+  min-height: 60vh;
+  display: grid;
+  grid-template-columns: 40% 10% 50%;
+}
+h2 {
+  margin: 0px;
+}
+/**************/
+/*** HEADER ***/
+/**************/
+.header-div {
+  background: #c2efeb;
+  height: 8vh;
+  padding: 10px 8vh;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.header-image {
+  height: 8vh;
+}
+.header-login {
+  align-self: center;
+  text-align: end;
+  cursor: pointer;
+}
+.header-login:hover {
+  font-weight: bolder;
+  color: #3f4d79;
+}
+.header-login-link {
+  text-decoration: none;
+}
+
+/**************/
+/**** HOME ****/
+/**************/
+.home-register {
+  align-self: end;
+}
+.home-register-text {
+  padding: 1rem 0px;
+  padding-top: 2rem;
+  text-align: center;
+}
+.home-image {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 25rem;
+}
+
+/************/
+/* REGISTER */
+/************/
+.register-grid {
+  display: grid;
+  grid-template-columns: auto 40rem auto;
+  min-height: 79vh;
+  align-content: center;
+}
+.register-div {
+  padding: 2rem;
+  background: rgba(110, 164, 191, 0.5);
+  border-radius: 5px;
+}
+/* .form-input-padding {
+  padding-bottom: 20px;
+} */
+.form-input {
+  display: grid;
+  grid-template-columns: 8rem auto;
+  /* padding-bottom: 15px; */
+}
+.register-button-div {
+  text-align: end;
+  padding: 10px 0px;
+}
+.register-button {
+  padding: 0.5rem 2rem;
+  background-color: #3f4d79;
+  color: white;
+  cursor: pointer;
+}
+.register-button:hover {
+  background-color: #7089db;
+  color: black;
+}
+.register-question {
+  text-align-last: center;
+  font-weight: bolder;
+  padding-top: 1.5rem;
+}
+.error-message-hide {
+  visibility: hidden;
+  padding-bottom: 5px;
+}
+.error-message {
+  visibility: visible;
+  color: red;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+/*************/
+/*** LOGIN ***/
+/*************/
+.character15-image {
+  position: absolute;
+  bottom: 72px;
+  right: 0;
+  width: 10rem;
+}
+.character18-image {
+  position: absolute;
+  bottom: 72px;
+  left: 0;
+  width: 13rem;
+}
+.login-error {
+  padding-bottom: 20px;
+}
+
+/***********/
+/* DASHBOARD */
+/*************/
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.dashboard-col {
+  width: 5rem;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #6ea4bf;
+  color: white;
+}
+
+.pagination-active {
+  background-color: #7089db;
+  color: white;
+}
+.pagination {
+  cursor: pointer;
+}
+/*********/
+/* MODAL */
+/*********/
+.modal-background {
+  background-color: rgba(150, 150, 150, 0.8);
+}
+.modal-hide {
+  color: rgba(150, 150, 150, 0.8);
+}
+.modal-hidden {
+  visibility: hidden;
+}
+.modal-position {
+  position: absolute;
+  /* top: 0;
+  bottom: 0; */
+  right: 0;
+  left: 0;
+  width: 45vw;
+  margin: -70px auto;
+}
+.modal-container {
+  padding: 2rem 3rem;
+  background-color: rgb(154, 210, 236);
+  border-radius: 5px;
+}
+.modal-close {
+  text-align-last: end;
+  cursor: pointer;
+  font-weight: bold;
+}
+@media (max-width: 400px) {
+  .register-div {
+    padding: 1.5rem;
+  }
+  .form-input {
+    grid-template-columns: 5rem auto;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 3rem 0.5rem;
+    grid-template-columns: none;
+  }
+  .home-image {
+    content-visibility: hidden;
+  }
+  .home-register-text {
+    padding-top: 0px;
+  }
+  h1 {
+    padding-top: 10px;
+  }
+  .register-grid {
+    grid-template-columns: auto auto auto;
+  }
+  .character18-image {
+    content-visibility: hidden;
+  }
+  .character15-image {
+    z-index: -1;
+  }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .container {
+    padding: 5rem 2rem;
+    grid-template-columns: 40% 5% 55%;
+  }
+  .home-image {
+    bottom: -6rem;
+  }
+  .character15-image,
+  .character18-image {
+    z-index: -1;
+  }
+}
