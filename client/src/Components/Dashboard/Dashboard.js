@@ -12,6 +12,7 @@ const Dashboard = () => {
   const [username, setUsername] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [pickedQuote, setPickedQuote] = useState([]);
+  const [searchCompanyName, setSearchCompanyName] = useState("");
 
   const [userData, setUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -126,12 +127,27 @@ const Dashboard = () => {
               : "dashboard-background "
           }
         >
+          <div
+            style={{
+              backgroundColor: "#ecfee8",
+              padding: "20px 0px",
+              borderRadius: "5px",
+            }}
+          >
+            <label style={{ paddingRight: "20px" }}>Search Company Name</label>
+            <input
+              type="search"
+              value={searchCompanyName}
+              onChange={(e) => setSearchCompanyName(e.target.value)}
+            />
+          </div>
           {userData.length ? (
             <>
               <Table
                 userData={currentPosts}
                 setRefresh={setRefresh}
                 refresh={refresh}
+                searchCompanyName={searchCompanyName}
               />
               <div
                 style={{

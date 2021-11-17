@@ -7,6 +7,8 @@ import trashHover from "./trashHover.png";
 import edit from "./edit.png";
 import editHover from "./editHover.png";
 import inbox from "./inbox.png";
+import upActive from "./upActive.png";
+import downActive from "./downActive.png";
 
 export {
   logo,
@@ -18,4 +20,6 @@ export {
   edit,
   editHover,
   inbox,
+  upActive,
+  downActive,
 };
