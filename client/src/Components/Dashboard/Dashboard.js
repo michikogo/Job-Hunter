@@ -17,6 +17,8 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
 
+  const [refresh, setRefresh] = useState("");
+
   const populateQuote = async () => {
     const request = await fetch("http://localhost:5000/directory/contents", {
       headers: {
@@ -57,7 +59,7 @@ const Dashboard = () => {
     } else {
       naviage("/login");
     }
-  }, []);
+  }, [showModal, refresh]);
 
   const handleShow = () => {
     setShowModal(true);
@@ -75,7 +77,6 @@ const Dashboard = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
   return (
     <div
       className={
@@ -100,7 +101,12 @@ const Dashboard = () => {
       {pickedQuote && (
         <div style={{ padding: "0px 10rem", paddingTop: "2rem" }}>
           <div>
-            Remember <i>{pickedQuote.author}</i> once said:
+            Remember
+            {(
+              <span>
+                <i>{pickedQuote.author}</i> once said:
+              </span>
+            ) || <span>this:</span>}
           </div>
           <div style={{ textAlign: "center", paddingLeft: "10px" }}>
             <h4>{pickedQuote.text}</h4>
@@ -122,7 +128,11 @@ const Dashboard = () => {
         >
           {userData.length ? (
             <>
-              <Table userData={currentPosts} />
+              <Table
+                userData={currentPosts}
+                setRefresh={setRefresh}
+                refresh={refresh}
+              />
               <div
                 style={{
                   textAlign: "center",
