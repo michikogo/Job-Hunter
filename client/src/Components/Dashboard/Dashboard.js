@@ -14,6 +14,7 @@ const Dashboard = () => {
   const [pickedQuote, setPickedQuote] = useState([]);
   const [searchCompanyName, setSearchCompanyName] = useState("");
 
+  const [currentID, setCurrentID] = useState("");
   const [userData, setUserData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
@@ -79,100 +80,105 @@ const Dashboard = () => {
     setCurrentPage(pageNumber);
   };
   return (
-    <div
-      className={
-        showModal
-          ? "dashboard-container modal-background"
-          : "dashboard-container"
-      }
-    >
-      <div style={{ display: "grid", gridTemplateColumns: " auto auto" }}>
-        <h2 className={showModal && "modal-hide"}>Hello {username}</h2>
-        <div style={{ textAlign: "right" }}>
-          <input
-            type="submit"
-            value="Add Application"
-            className={
-              showModal ? "modal-hide register-button" : "register-button"
-            }
-            onClick={handleShow}
-          />
-        </div>
-      </div>
-      {pickedQuote && (
-        <div style={{ padding: "0px 10rem", paddingTop: "2rem" }}>
-          <div>
-            Remember
-            {(
-              <span>
-                <i>{pickedQuote.author}</i> once said:
-              </span>
-            ) || <span>this:</span>}
-          </div>
-          <div style={{ textAlign: "center", paddingLeft: "10px" }}>
-            <h4>{pickedQuote.text}</h4>
-          </div>
-          <div>Good Luck! You got this!</div>
-        </div>
-      )}
-
-      <div style={{ position: "relative" }}>
-        <div className="modal-position">
-          {showModal && <Modal username={username} handleClose={handleClose} />}
-        </div>
-        <div
-          class={
-            showModal
-              ? "dashboard-background dashboard-hide-modal "
-              : "dashboard-background "
-          }
-        >
-          <div
-            style={{
-              backgroundColor: "#ecfee8",
-              padding: "20px 0px",
-              borderRadius: "5px",
-            }}
-          >
-            <label style={{ paddingRight: "20px" }}>Search Company Name</label>
+    <>
+      <div
+        className={
+          showModal
+            ? "dashboard-container modal-background"
+            : "dashboard-container"
+        }
+      >
+        <div style={{ display: "grid", gridTemplateColumns: " auto auto" }}>
+          <h2 className={showModal && "modal-hide"}>Hello {username}</h2>
+          {/* BUTTON ADD APPLICATION */}
+          <div style={{ textAlign: "right" }}>
             <input
-              type="search"
-              value={searchCompanyName}
-              onChange={(e) => setSearchCompanyName(e.target.value)}
+              type="submit"
+              value="Add Application"
+              className={
+                showModal ? "custom-button modal-hide" : "custom-button"
+              }
+              onClick={handleShow}
             />
           </div>
-          {userData.length ? (
-            <>
-              <Table
-                userData={currentPosts}
-                setRefresh={setRefresh}
-                refresh={refresh}
-                searchCompanyName={searchCompanyName}
-              />
-              <div
-                style={{
-                  textAlign: "center",
-                  backgroundColor: "#ecfee8",
-                  borderRadius: "5px",
-                }}
-              >
-                <Pagination
-                  postsPerPage={postsPerPage}
-                  totalPosts={userData.length}
-                  paginate={paginate}
-                />
-              </div>
-            </>
-          ) : (
-            <div style={{ padding: "10rem 0rem" }}>
-              <img src={inbox} width="100" />
-              <br />
-              <small>Start Applying</small>
+        </div>
+        {pickedQuote && (
+          <div
+            className={
+              showModal ? "dashboard-quote modal-hide" : "dashboard-quote"
+            }
+          >
+            <div>
+              Remember
+              {(
+                <span>
+                  <i>{pickedQuote.author}</i> once said:
+                </span>
+              ) || <span>this:</span>}
             </div>
-          )}
+            <div style={{ textAlign: "center", paddingLeft: "10px" }}>
+              <h4>{pickedQuote.text}</h4>
+            </div>
+            <div>Good Luck! You got this!</div>
+          </div>
+        )}
+        <div style={{ position: "relative" }}>
+          {/* SHOW MODAL */}
+          <div className="modal-position">
+            {showModal && <Modal handleClose={handleClose} />}
+          </div>
         </div>
       </div>
-    </div>
+      {/* START OF NEW SECTION */}
+
+      <div
+        class={
+          showModal
+            ? "dashboard-background modal-hide modal-background"
+            : "dashboard-background "
+        }
+      >
+        {/* SEARCH */}
+        <div style={{ textAlign: "left", paddingLeft: "5rem" }}>
+          <label style={{ paddingRight: "20px" }} className="register-label">
+            Search Company Name
+          </label>
+          <input
+            type="search"
+            className="register-input"
+            value={searchCompanyName}
+            style={{ width: "20rem" }}
+            onChange={(e) => setSearchCompanyName(e.target.value)}
+          />
+        </div>
+        {/* TABLE and PAGINATION */}
+        {userData.length ? (
+          <>
+            <Table
+              userData={currentPosts}
+              currentID={currentID}
+              setCurrentID={setCurrentID}
+              setRefresh={setRefresh}
+              refresh={refresh}
+              searchCompanyName={searchCompanyName}
+            />
+
+            <Pagination
+              currentID={currentID}
+              postsPerPage={postsPerPage}
+              totalPosts={userData.length}
+              paginate={paginate}
+            />
+          </>
+        ) : (
+          <div style={{ padding: "10rem 0rem" }}>
+            <img src={inbox} width="100" />
+            <br />
+            <small>Start Applying</small>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

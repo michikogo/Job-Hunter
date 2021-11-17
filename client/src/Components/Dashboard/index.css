@@ -2,9 +2,7 @@
 /* DASHBOARD */
 /*************/
 .dashboard-container {
-  padding: 4rem 3rem;
-  min-height: 63.4vh;
-  /* background-color: rgba(110, 164, 191, 0.5); */
+  padding: 4rem 3rem 3rem 3rem;
 }
 .dashboard-hide-modal {
   position: absolute;
@@ -12,9 +10,10 @@
 }
 .dashboard-background {
   width: 100%;
-  margin-top: 3rem;
-  background-color: #ecfee8;
-  border-radius: 5px;
+  /* margin-top: 3rem; */
+  padding-top: 3rem;
+  background-color: #ede3e4;
+  /* border-radius: 5px; */
   text-align: -webkit-center;
 }
 .dashboard-table {
@@ -29,14 +28,101 @@
   width: 1rem;
   cursor: pointer;
 }
+.dashboard-quote {
+  padding: 0px 10rem;
+  padding-top: 2rem;
+}
+
 /*************/
 /*** MODAL ***/
 /*************/
+.modal-background {
+  background-color: rgba(150, 150, 150, 0.8);
+}
+.modal-hide {
+  color: rgba(150, 150, 150, 0.8);
+}
+.modal-hidden {
+  visibility: hidden;
+}
+.modal-position {
+  position: absolute;
+  /* top: -9rem; */
+  right: 0;
+  left: 0;
+  /* bottom: 0; */
+  width: 50vw;
+  margin: -17rem auto;
+}
+.modal-container {
+  padding: 2rem 3rem;
+  background-color: rgb(154, 210, 236);
+  border-radius: 5px;
+}
+.modal-close {
+  text-align-last: end;
+  cursor: pointer;
+  font-weight: bold;
+}
 
 /**************/
 /* PAGINATION */
 /**************/
+ul {
+  display: inline-flex;
+  list-style-type: none;
+}
+li {
+  padding: 0.2rem 0.8rem;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+.pagination-active {
+  background: #af9fa5;
+  color: white;
+}
+.pagination {
+  background: #ede3e4;
+  cursor: pointer;
+}
 
 /*************/
 /*** TABLE ***/
 /*************/
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.dashboard-col {
+  width: 5rem;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #6ea4bf;
+  color: white;
+}
+.table-action {
+  width: 3rem;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .modal-position {
+    width: fit-content;
+    margin: -34rem -2.85rem;
+  }
+}
+@media (min-width: 601px) and (max-width: 800px) {
+  .modal-position {
+    width: fit-content;
+  }
+}

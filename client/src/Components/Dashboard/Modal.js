@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-const Modal = ({ username, handleClose }) => {
+const Modal = ({ handleClose }) => {
+  // Sending the inputs to backend
   const [companyName, setCompanyName] = useState("");
-  const [checkCompanyName, setCheckCompanyName] = useState(false);
   const [role, setRole] = useState("");
-  const [checkRole, setCheckRole] = useState(false);
   const [location, setLocation] = useState("");
-  const [checkLocation, setCheckLocation] = useState(false);
   const [dateApplied, setDateApplied] = useState("");
-  const [checkDateApplied, setCheckDateApplied] = useState(false);
   const [linkedAccounts, setLinkedAccounts] = useState("");
   const [status, setStatus] = useState("");
+
+  // For error message to show
+  const [checkCompanyName, setCheckCompanyName] = useState(false);
+  const [checkRole, setCheckRole] = useState(false);
+  const [checkLocation, setCheckLocation] = useState(false);
+  const [checkDateApplied, setCheckDateApplied] = useState(false);
   const [checkStatus, setCheckStatus] = useState(false);
 
   const checkMissing = () => {
@@ -74,8 +77,6 @@ const Modal = ({ username, handleClose }) => {
 
       const data = await req.json();
       if (data.status === "ok") {
-        // setQuote(tempQuote);
-        // setTempQuote("");
         handleClose();
       } else {
         alert(data.error);
@@ -88,13 +89,16 @@ const Modal = ({ username, handleClose }) => {
       <p className="modal-close" onClick={handleClose}>
         X
       </p>
-      <h1>Add Application</h1>
+      <h1 style={{ textAlign: "center", paddingBottom: "2rem" }}>
+        Add Application
+      </h1>
       <form onSubmit={updateCode}>
         <div className="form-input">
-          <label>Company Name</label>
+          <label className="register-label">Company Name</label>
           <input
             type="text"
             value={companyName}
+            className="register-input"
             onChange={(e) => setCompanyName(e.target.value)}
           />
           <div></div>
@@ -107,10 +111,11 @@ const Modal = ({ username, handleClose }) => {
           </small>
         </div>
         <div className="form-input">
-          <label>Role</label>
+          <label className="register-label">Role</label>
           <input
             type="text"
             value={role}
+            className="register-input"
             onChange={(e) => setRole(e.target.value)}
           />
           <div></div>
@@ -119,10 +124,11 @@ const Modal = ({ username, handleClose }) => {
           </small>
         </div>
         <div className="form-input">
-          <label>Location</label>
+          <label className="register-label">Location</label>
           <input
             type="text"
             value={location}
+            className="register-input"
             onChange={(e) => setLocation(e.target.value)}
           />
           <div></div>
@@ -133,26 +139,29 @@ const Modal = ({ username, handleClose }) => {
           </small>
         </div>
         <div className="form-input" style={{ paddingBottom: "15px" }}>
-          <label>Date Applied</label>
+          <label className="register-label">Date Applied</label>
           <input
             type="date"
             value={dateApplied}
+            className="register-input"
             onChange={(e) => setDateApplied(e.target.value)}
           />
         </div>
         <div className="form-input" style={{ paddingBottom: "15px" }}>
-          <label>Linked Accounts</label>
+          <label className="register-label">Linked Accounts</label>
           <input
             type="text"
             value={linkedAccounts}
+            className="register-input"
             onChange={(e) => setLinkedAccounts(e.target.value)}
           />
         </div>
         <div className="form-input">
-          <label>Status</label>
+          <label className="register-label">Status</label>
           <select
             type="select"
             value={status}
+            className="register-input"
             onChange={(e) => setStatus(e.target.value)}
           >
             <option selected value=""></option>
@@ -169,8 +178,8 @@ const Modal = ({ username, handleClose }) => {
             Missing status
           </small>
         </div>
-        <div className="register-button-div">
-          <input type="submit" value="Add" className="register-button" />
+        <div className="register-button">
+          <input type="submit" value="Add" className="custom-button" />
         </div>
       </form>
     </div>

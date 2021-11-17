@@ -151,67 +151,7 @@ h2 {
 /***********/
 /* DASHBOARD */
 /*************/
-td,
-th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-.dashboard-col {
-  width: 5rem;
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 
-tr:hover {
-  background-color: #ddd;
-}
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #6ea4bf;
-  color: white;
-}
-
-.pagination-active {
-  background-color: #7089db;
-  color: white;
-}
-.pagination {
-  cursor: pointer;
-}
-/*********/
-/* MODAL */
-/*********/
-.modal-background {
-  background-color: rgba(150, 150, 150, 0.8);
-}
-.modal-hide {
-  color: rgba(150, 150, 150, 0.8);
-}
-.modal-hidden {
-  visibility: hidden;
-}
-.modal-position {
-  position: absolute;
-  /* top: 0;
-  bottom: 0; */
-  right: 0;
-  left: 0;
-  width: 45vw;
-  margin: -70px auto;
-}
-.modal-container {
-  padding: 2rem 3rem;
-  background-color: rgb(154, 210, 236);
-  border-radius: 5px;
-}
-.modal-close {
-  text-align-last: end;
-  cursor: pointer;
-  font-weight: bold;
-}
 @media (max-width: 400px) {
   .register-div {
     padding: 1.5rem;

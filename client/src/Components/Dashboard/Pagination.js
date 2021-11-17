@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+const Pagination = ({ currentID, postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
   const [currentNumber, setCurrentNumber] = useState(1);
 
@@ -16,8 +16,12 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
             key={number}
             className={currentNumber === number && "pagination-active"}
             onClick={() => {
-              paginate(number);
-              setCurrentNumber(number);
+              if (currentID === "") {
+                paginate(number);
+                setCurrentNumber(number);
+              } else {
+                alert("Update or Cancel before moving to the next page");
+              }
             }}
           >
             <a
