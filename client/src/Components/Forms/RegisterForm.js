@@ -81,7 +81,9 @@ const RegisterForm = () => {
       {/* FORM */}
       <form onSubmit={registerUser}>
         <div className="form-input">
-          <label className="register-label">First Name</label>
+          <label className="register-label">
+            First Name <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             value={firstName}
@@ -96,7 +98,9 @@ const RegisterForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label className="register-label">Last Name</label>
+          <label className="register-label">
+            Last Name <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             value={lastName}
@@ -111,7 +115,9 @@ const RegisterForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label className="register-label">Email Address</label>
+          <label className="register-label">
+            Email Address <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             value={email}
@@ -126,7 +132,9 @@ const RegisterForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label className="register-label">Password</label>
+          <label className="register-label">
+            Password <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="password"
             value={password}
@@ -141,7 +149,9 @@ const RegisterForm = () => {
           </small>
         </div>
         <div className="form-input">
-          <label className="register-label">Confirm Password</label>
+          <label className="register-label">
+            Confirm Password <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="password"
             value={confirmPassword}

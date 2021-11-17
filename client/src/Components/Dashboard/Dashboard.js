@@ -164,6 +164,7 @@ const Dashboard = () => {
             />
 
             <Pagination
+              showModal={showModal}
               currentID={currentID}
               postsPerPage={postsPerPage}
               totalPosts={userData.length}

@@ -78,8 +78,6 @@ const Modal = ({ handleClose }) => {
       const data = await req.json();
       if (data.status === "ok") {
         handleClose();
-      } else {
-        alert(data.error);
       }
     }
   };
@@ -94,7 +92,9 @@ const Modal = ({ handleClose }) => {
       </h1>
       <form onSubmit={updateCode}>
         <div className="form-input">
-          <label className="register-label">Company Name</label>
+          <label className="register-label">
+            Company Name <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             value={companyName}
@@ -111,7 +111,9 @@ const Modal = ({ handleClose }) => {
           </small>
         </div>
         <div className="form-input">
-          <label className="register-label">Role</label>
+          <label className="register-label">
+            Role <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             value={role}
@@ -124,7 +126,9 @@ const Modal = ({ handleClose }) => {
           </small>
         </div>
         <div className="form-input">
-          <label className="register-label">Location</label>
+          <label className="register-label">
+            Location <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             value={location}
@@ -139,13 +143,21 @@ const Modal = ({ handleClose }) => {
           </small>
         </div>
         <div className="form-input" style={{ paddingBottom: "15px" }}>
-          <label className="register-label">Date Applied</label>
+          <label className="register-label">
+            Date Applied <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="date"
             value={dateApplied}
             className="register-input"
             onChange={(e) => setDateApplied(e.target.value)}
           />
+          <div></div>
+          <small
+            className={checkLocation ? "error-message" : "error-message-hide"}
+          >
+            Missing date
+          </small>
         </div>
         <div className="form-input" style={{ paddingBottom: "15px" }}>
           <label className="register-label">Linked Accounts</label>
@@ -157,7 +169,9 @@ const Modal = ({ handleClose }) => {
           />
         </div>
         <div className="form-input">
-          <label className="register-label">Status</label>
+          <label className="register-label">
+            Status <span style={{ color: "red" }}>*</span>
+          </label>
           <select
             type="select"
             value={status}

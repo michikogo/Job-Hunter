@@ -17,7 +17,7 @@
   text-align: -webkit-center;
 }
 .dashboard-table {
-  width: 100%;
+  width: 75rem;
   padding: 2rem;
 }
 .dashboard-edit {
@@ -37,7 +37,7 @@
 /*** MODAL ***/
 /*************/
 .modal-background {
-  background-color: rgba(150, 150, 150, 0.8);
+  /* background-color: rgba(150, 150, 150, 0.8) !important; */
 }
 .modal-hide {
   color: rgba(150, 150, 150, 0.8);
@@ -51,12 +51,12 @@
   right: 0;
   left: 0;
   /* bottom: 0; */
-  width: 50vw;
-  margin: -17rem auto;
+  width: 70vw;
+  margin: -15rem auto;
 }
 .modal-container {
   padding: 2rem 3rem;
-  background-color: rgb(154, 210, 236);
+  background-color: #e4dee4;
   border-radius: 5px;
 }
 .modal-close {
@@ -83,6 +83,7 @@ li {
 }
 .pagination {
   background: #ede3e4;
+  padding: 0px;
   cursor: pointer;
 }
 

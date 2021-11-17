@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-const Pagination = ({ currentID, postsPerPage, totalPosts, paginate }) => {
+const Pagination = ({
+  showModal,
+  currentID,
+  postsPerPage,
+  totalPosts,
+  paginate,
+}) => {
   const pageNumbers = [];
   const [currentNumber, setCurrentNumber] = useState(1);
 
@@ -9,31 +15,35 @@ const Pagination = ({ currentID, postsPerPage, totalPosts, paginate }) => {
   }
 
   return (
-    <div>
-      <ul className="pagination">
-        {pageNumbers.map((number) => (
-          <li
-            key={number}
+    <ul
+      className={
+        showModal ? "pagination modal-hide modal-background" : "pagination"
+      }
+    >
+      {pageNumbers.map((number) => (
+        <li
+          key={number}
+          className={currentNumber === number && "pagination-active"}
+          className={showModal && "modal-hide modal-background"}
+          onClick={() => {
+            if (currentID === "") {
+              paginate(number);
+              setCurrentNumber(number);
+            } else {
+              alert("Update or Cancel before moving to the next page");
+            }
+          }}
+        >
+          <a
+            href="/dashboard/!#"
             className={currentNumber === number && "pagination-active"}
-            onClick={() => {
-              if (currentID === "") {
-                paginate(number);
-                setCurrentNumber(number);
-              } else {
-                alert("Update or Cancel before moving to the next page");
-              }
-            }}
+            className={showModal && "modal-hide modal-background"}
           >
-            <a
-              href="/dashboard/!#"
-              className={currentNumber === number && "pagination-active"}
-            >
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+            {number}
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 };
 
