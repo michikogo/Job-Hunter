@@ -44,7 +44,6 @@ const Welcome = ({ username, showModal, setShowModal }) => {
               type='submit'
               value='Add Application'
               className='custom-button'
-              onClick={handleShow}
             />
           )}
         </div>
