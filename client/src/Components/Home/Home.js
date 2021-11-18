@@ -1,7 +1,8 @@
 import React from 'react'
 import { abstract, homeImage } from '../../Assets'
-import RegisterForm from '../Forms/RegisterForm'
-// import HomeForm from './HomeForm'
+import HomeRegister from './HomeRegister'
+import './index.css'
+
 const Home = () => {
   return (
     <div className='home-container'>
@@ -17,7 +18,7 @@ const Home = () => {
         <h3 className='home-form'>
           Sign up now! We love to help you organize your job applications.
         </h3>
-        {/* <HomeForm /> */}
+        <HomeRegister />
       </div>
     </div>
   )
