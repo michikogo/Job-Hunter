@@ -1,6 +1,6 @@
 .register-grid {
   display: grid;
-  grid-template-columns: auto 40rem auto;
+  grid-template-columns: auto 50rem auto;
   min-height: 79vh;
   align-content: center;
 }
@@ -8,18 +8,18 @@
   position: absolute;
   bottom: 72px;
   right: 0;
-  width: 10rem;
+  width: 15rem;
 }
 .character18-image {
   position: absolute;
   bottom: 72px;
   left: 0;
-  width: 13rem;
+  width: 20rem;
 }
 .register-container {
   background: rgba(228, 222, 228, 0.9);
-  border-radius: 15px;
-  padding: 4rem;
+  border-radius: 10px;
+  padding: 5rem 10rem;
 }
 .register-button {
   text-align: right;
@@ -57,8 +57,8 @@
 
 @media (max-width: 400px) {
   .register-container {
-    margin: 2rem 0rem;
-    padding: 1.5rem;
+    margin: 2rem 0rem !important;
+    padding: 1.5rem !important;
   }
   .form-input {
     grid-template-columns: 5rem auto;
@@ -66,7 +66,8 @@
 }
 @media (max-width: 600px) {
   .register-container {
-    margin: 2rem 0.5rem;
+    margin: 2rem 0.5rem !important;
+    padding: 1.5rem !important;
   }
   .register-grid {
     grid-template-columns: auto auto auto;
@@ -75,17 +76,31 @@
     content-visibility: hidden;
   }
   .character15-image {
+    width: 15rem;
     z-index: -1;
   }
 }
-@media (min-width: 601px) and (max-width: 900px) {
+@media (min-width: 601px) and (max-width: 1100px) {
+  .register-container {
+    margin: 5rem !important;
+    padding: 5rem !important;
+  }
   .character15-image,
   .character18-image {
     z-index: -1;
   }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
+  .character15-image,
+  .character18-image {
+    z-index: -1;
+  }
   .register-container {
-    padding: 2rem;
+    padding: 7rem 9rem;
+  }
+}
+@media (min-width: 1400px) and (max-width: 1600px) {
+  .register-grid {
+    min-height: 83vh;
   }
 }
