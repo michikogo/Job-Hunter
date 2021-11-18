@@ -70,7 +70,7 @@
 .table-head {
   text-align-last: center;
 }
-.table-sort {
+.table-filter {
   /* padding-left: 5px; */
   display: inline-grid;
 }

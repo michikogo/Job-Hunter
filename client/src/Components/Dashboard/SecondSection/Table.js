@@ -8,6 +8,7 @@ import {
   downActive,
   upActive
 } from '../../../Assets/index'
+import Filter from './Filter'
 
 const Table = ({
   userData,
@@ -15,8 +16,9 @@ const Table = ({
   setCurrentID,
   search,
   setSearch,
-  showSearch,
-  showSort
+  filter,
+  sortCol,
+  setSortCol
 }) => {
   const initialUpdate = {
     updateCompanyName: '',
@@ -38,15 +40,6 @@ const Table = ({
     setUpdateRow
   ] = useState(initialUpdate)
 
-  const initialSort = {
-    sortCompanyName: '',
-    sortRole: '',
-    sortLocation: '',
-    sortDateApplied: '',
-    sortLinkedAccounts: '',
-    sortStatus: ''
-  }
-  const [sortCol, setSortCol] = useState(initialSort)
   const [refresh, setRefresh] = useState('')
 
   const onSearchChange = e => {
@@ -110,173 +103,80 @@ const Table = ({
           <th>
             <span>Company Name</span>
             <br />
-            <span className='table-sort'>
-              {showSearch && (
-                <input
-                  name='searchCompanyName'
-                  placeholder='Search'
-                  type='search'
-                  className='register-input search-input'
-                  value={search.searchCompanyName}
-                  onChange={onSearchChange}
-                />
-              )}
-              {showSort && (
-                <select
-                  type='select'
-                  value={sortCol.sortCompanyName}
-                  className='register-input'
-                  onChange={e =>
-                    setSortCol(prev => ({
-                      ...prev,
-                      sortCompanyName: e.target.value
-                    }))
-                  }
-                >
-                  <option selected value=''></option>
-                  <option value='asc'>Ascending</option>
-                  <option value='desc'>Descending</option>
-                </select>
-              )}
-            </span>
+            <Filter
+              filter={filter}
+              search={search}
+              setSearch={setSearch}
+              searchName='searchCompanyName'
+              sortCol={sortCol}
+              setSortCol={setSortCol}
+              sortName='sortCompanyName'
+            />
           </th>
           <th>
             <span>Role</span>
             <br />
-            <span className='table-sort'>
-              <img
-                src={upActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortCompanyName: 'asc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortCompanyName: '' }))
-                }
-              />
-              <img
-                src={downActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortCompanyName: 'desc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortCompanyName: '' }))
-                }
-              />
-            </span>
+            <Filter
+              filter={filter}
+              search={search}
+              setSearch={setSearch}
+              searchName='searchRole'
+              sortCol={sortCol}
+              setSortCol={setSortCol}
+              sortName='sortRole'
+            />
           </th>
           <th>
             <span>Location</span>
             <br />
-            <span className='table-sort'>
-              <select name='' id=''></select>
-              {/* <img
-                src={upActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortDateApplied: 'asc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortDateApplied: '' }))
-                }
-              />
-              <img
-                src={downActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortDateApplied: 'desc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortDateApplied: '' }))
-                }
-              /> */}
-            </span>
+            <Filter
+              filter={filter}
+              search={search}
+              setSearch={setSearch}
+              searchName='searchLocation'
+              sortCol={sortCol}
+              setSortCol={setSortCol}
+              sortName='sortLocation'
+            />
           </th>
           <th>
             <span>Date Applied</span>
-            <span className='table-sort'>
-              <img
-                src={upActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortDateApplied: 'asc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortDateApplied: '' }))
-                }
-              />
-              <img
-                src={downActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortDateApplied: 'desc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortDateApplied: '' }))
-                }
-              />
-            </span>
+            <br />
+            <Filter
+              filter={filter}
+              search={search}
+              setSearch={setSearch}
+              searchName='searchDateApplied'
+              sortCol={sortCol}
+              setSortCol={setSortCol}
+              sortName='sortDateApplied'
+            />
           </th>
           <th>
             <span>Linked Accounts</span>
-            <span className='table-sort'>
-              <img
-                src={upActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortStatus: 'asc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortStatus: '' }))
-                }
-              />
-              <img
-                src={downActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortStatus: 'desc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortStatus: '' }))
-                }
-              />
-            </span>
+            <br />
+            <Filter
+              filter={filter}
+              search={search}
+              setSearch={setSearch}
+              searchName='searchLinkedAccounts'
+              sortCol={sortCol}
+              setSortCol={setSortCol}
+              sortName='sortLinkedAccounts'
+            />
           </th>
           <th>
             <span>Status</span>
-            <span className='table-sort'>
-              <img
-                src={upActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortStatus: 'asc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortStatus: '' }))
-                }
-              />
-              <img
-                src={downActive}
-                alt=''
-                width='10'
-                onClick={() =>
-                  setSortCol(prev => ({ ...prev, sortStatus: 'desc' }))
-                }
-                onDoubleClick={() =>
-                  setSortCol(prev => ({ ...prev, sortStatus: '' }))
-                }
-              />
-            </span>
+            <br />
+            <Filter
+              filter={filter}
+              search={search}
+              setSearch={setSearch}
+              searchName='searchStatus'
+              sortCol={sortCol}
+              setSortCol={setSortCol}
+              sortName='sortStatus'
+            />
           </th>
           <th>Action</th>
         </tr>
@@ -303,55 +203,94 @@ const Table = ({
                 .includes(
                   search.searchLocation.replace(/\s+/g, '').toLowerCase()
                 )
+            }) // searching thru date applied
+            .filter((e, i) => {
+              return e.dateApplied
+                .toLowerCase()
+                .includes(
+                  search.searchDateApplied.replace(/\s+/g, '').toLowerCase()
+                )
+            }) // searching thru linked Accounts
+            .filter((e, i) => {
+              return e.linkedAccounts
+                .toLowerCase()
+                .includes(
+                  search.searchLinkedAccounts.replace(/\s+/g, '').toLowerCase()
+                )
+            }) // searching thru status
+            .filter((e, i) => {
+              return e.status
+                .toLowerCase()
+                .includes(search.searchStatus.replace(/\s+/g, '').toLowerCase())
             })
             .sort((firstelement, secondelement) => {
               if (sortCol.sortCompanyName === 'asc') {
-                return firstelement.companyName > secondelement.companyName
+                return firstelement.companyName.toLowerCase() >
+                  secondelement.companyName.toLowerCase()
                   ? 1
                   : -1
               } else if (sortCol.sortCompanyName === 'desc') {
-                return firstelement.companyName < secondelement.companyName
+                return firstelement.companyName.toLowerCase() <
+                  secondelement.companyName.toLowerCase()
                   ? 1
                   : -1
               }
+            })
+            .sort((firstelement, secondelement) => {
               if (sortCol.sortRole === 'asc') {
-                return firstelement.sortRole > secondelement.sortRole ? 1 : -1
+                return firstelement.role.toLowerCase() >
+                  secondelement.role.toLowerCase()
+                  ? 1
+                  : -1
               } else if (sortCol.sortRole === 'desc') {
-                return firstelement.sortRole < secondelement.sortRole ? 1 : -1
+                return firstelement.role.toLowerCase() <
+                  secondelement.role.toLowerCase()
+                  ? 1
+                  : -1
               }
               if (sortCol.sortLocation === 'asc') {
-                return firstelement.sortLocation > secondelement.sortLocation
+                return firstelement.location.toLowerCase() >
+                  secondelement.location.toLowerCase()
                   ? 1
                   : -1
               } else if (sortCol.sortLocation === 'desc') {
-                return firstelement.sortLocation < secondelement.sortLocation
+                return firstelement.location.toLowerCase() <
+                  secondelement.location.toLowerCase()
                   ? 1
                   : -1
               }
               if (sortCol.sortDateApplied === 'asc') {
-                return firstelement.dateApplied > secondelement.dateApplied
+                return firstelement.dateApplied.toLowerCase() >
+                  secondelement.dateApplied.toLowerCase()
                   ? 1
                   : -1
               } else if (sortCol.sortDateApplied === 'desc') {
-                return firstelement.dateApplied < secondelement.dateApplied
+                return firstelement.dateApplied.toLowerCase() <
+                  secondelement.dateApplied.toLowerCase()
                   ? 1
                   : -1
               }
-              if (sortCol.linkedAccounts === 'asc') {
-                return firstelement.linkedAccounts >
-                  secondelement.linkedAccounts
+              if (sortCol.sortLinkedAccounts === 'asc') {
+                return firstelement.linkedAccounts.toLowerCase() >
+                  secondelement.linkedAccounts.toLowerCase()
                   ? 1
                   : -1
               } else if (sortCol.linkedAccounts === 'desc') {
-                return firstelement.linkedAccounts <
-                  secondelement.linkedAccounts
+                return firstelement.linkedAccounts.toLowerCase() <
+                  secondelement.linkedAccounts.toLowerCase()
                   ? 1
                   : -1
               }
               if (sortCol.sortStatus === 'asc') {
-                return firstelement.status > secondelement.status ? 1 : -1
+                return firstelement.status.toLowerCase() >
+                  secondelement.status.toLowerCase()
+                  ? 1
+                  : -1
               } else if (sortCol.sortStatus === 'desc') {
-                return firstelement.status < secondelement.status ? 1 : -1
+                return firstelement.status.toLowerCase() <
+                  secondelement.status.toLowerCase()
+                  ? 1
+                  : -1
               }
             })
             .map((e, i) => {

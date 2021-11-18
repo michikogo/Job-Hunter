@@ -8,7 +8,10 @@ const SecondSection = ({ showModal, userData }) => {
   const initialSearch = {
     searchCompanyName: '',
     searchRole: '',
-    searchLocation: ''
+    searchLocation: '',
+    searchDateApplied: '',
+    searchLinkedAccounts: '',
+    searchStatus: ''
   }
   const [search, setSearch] = useState(initialSearch)
   const [currentID, setCurrentID] = useState('')
@@ -17,7 +20,15 @@ const SecondSection = ({ showModal, userData }) => {
     showSort: false
   }
   const [filter, setFilter] = useState(initialFilter)
-
+  const initialSort = {
+    sortCompanyName: '',
+    sortRole: '',
+    sortLocation: '',
+    sortDateApplied: '',
+    sortLinkedAccounts: '',
+    sortStatus: ''
+  }
+  const [sortCol, setSortCol] = useState(initialSort)
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(10)
 
@@ -29,6 +40,15 @@ const SecondSection = ({ showModal, userData }) => {
   // Change page
   const paginate = pageNumber => {
     setCurrentPage(pageNumber)
+  }
+
+  const handleHideSort = () => {
+    setSortCol({ ...initialSort })
+    setFilter(prev => ({ ...prev, showSort: false }))
+  }
+  const handleHideSearch = () => {
+    setSearch({ ...initialSearch })
+    setFilter(prev => ({ ...prev, showSearch: false }))
   }
 
   return (
@@ -53,7 +73,7 @@ const SecondSection = ({ showModal, userData }) => {
             type='submit'
             className='custom-button'
             style={{ marginRight: '2rem' }}
-            onClick={() => setFilter(prev => ({ ...prev, showSort: false }))}
+            onClick={handleHideSort}
           >
             Hide Sort
           </button>
@@ -70,7 +90,7 @@ const SecondSection = ({ showModal, userData }) => {
           <button
             type='submit'
             className='custom-button'
-            onClick={() => setFilter(prev => ({ ...prev, showSearch: false }))}
+            onClick={handleHideSearch}
           >
             Hide Search
           </button>
@@ -84,8 +104,9 @@ const SecondSection = ({ showModal, userData }) => {
             setCurrentID={setCurrentID}
             search={search}
             setSearch={setSearch}
-            showSearch={filter.showSearch}
-            showSort={filter.showSort}
+            filter={filter}
+            sortCol={sortCol}
+            setSortCol={setSortCol}
           />
           <Pagination
             showModal={showModal}
