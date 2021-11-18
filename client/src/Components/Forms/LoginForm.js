@@ -1,101 +1,101 @@
-import React, { useState } from "react";
-import "./index.css";
+import React, { useState } from 'react'
+import './index.css'
 
 const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [emailChecker, setEmailChecker] = useState(false);
-  const [password, setPassword] = useState("");
-  const [passwordChecker, setPasswordChecker] = useState(false);
-  const [errorLogin, setErrorLogin] = useState(false);
+  const [email, setEmail] = useState('')
+  const [emailChecker, setEmailChecker] = useState(false)
+  const [password, setPassword] = useState('')
+  const [passwordChecker, setPasswordChecker] = useState(false)
+  const [errorLogin, setErrorLogin] = useState(false)
 
-  const loginUser = async (event) => {
-    event.preventDefault();
-    if (passwordChecker === "") {
-      setPasswordChecker(true);
+  const loginUser = async event => {
+    event.preventDefault()
+    if (passwordChecker === '') {
+      setPasswordChecker(true)
     } else {
-      setPasswordChecker(false);
+      setPasswordChecker(false)
     }
-    if (emailChecker === "") {
-      setEmailChecker(true);
+    if (emailChecker === '') {
+      setEmailChecker(true)
     } else {
-      setEmailChecker(false);
+      setEmailChecker(false)
     }
 
     if (!emailChecker && !passwordChecker) {
-      const createData = { email: email, password: password };
-      const response = await fetch("http://localhost:5000/user/login", {
-        method: "POST",
+      const createData = { email: email, password: password }
+      const response = await fetch('http://localhost:8000/user/login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(createData),
-      });
+        body: JSON.stringify(createData)
+      })
 
-      const data = await response.json();
-      console.log(data);
+      const data = await response.json()
+      console.log(data)
 
       if (data.user) {
         // to see localstorage in console.log
-        localStorage.setItem("token", data.user);
-        setErrorLogin(false);
-        window.location.href = "/dashboard";
+        localStorage.setItem('token', data.user)
+        setErrorLogin(false)
+        window.location.href = '/dashboard'
       } else {
-        setErrorLogin(true);
+        setErrorLogin(true)
       }
     }
-  };
+  }
 
   return (
-    <div className="register-container">
-      <h1 style={{ textAlign: "center" }}>Login</h1>
-      <div className="login-error">
-        <p className={errorLogin ? "error-message" : "error-message-hide"}>
+    <div className='register-container'>
+      <h1 style={{ textAlign: 'center' }}>Login</h1>
+      <div className='login-error'>
+        <p className={errorLogin ? 'error-message' : 'error-message-hide'}>
           Please check email and password
         </p>
       </div>
       <form onSubmit={loginUser}>
-        <div className="form-input">
-          <label className="register-label">Email</label>
+        <div className='form-input'>
+          <label className='register-label'>Email</label>
           <input
-            type="text"
+            type='text'
             value={email}
-            className="register-input"
-            onChange={(e) => setEmail(e.target.value)}
+            className='register-input'
+            onChange={e => setEmail(e.target.value)}
           />
           <div></div>
           <small
-            className={emailChecker ? "error-message" : "error-message-hide"}
+            className={emailChecker ? 'error-message' : 'error-message-hide'}
           >
             Missing email
           </small>
         </div>
-        <div className="form-input">
-          <label className="register-label">Password</label>
+        <div className='form-input'>
+          <label className='register-label'>Password</label>
           <input
-            type="password"
+            type='password'
             value={password}
-            className="register-input"
-            onChange={(e) => setPassword(e.target.value)}
+            className='register-input'
+            onChange={e => setPassword(e.target.value)}
           />
           <div></div>
           <small
-            className={passwordChecker ? "error-message" : "error-message-hide"}
+            className={passwordChecker ? 'error-message' : 'error-message-hide'}
           >
             Missing password
           </small>
         </div>
-        <div className="register-button">
-          <input type="submit" value="Login" className="custom-button" />
+        <div className='register-button'>
+          <input type='submit' value='Login' className='custom-button' />
         </div>
       </form>
-      <div className="register-question">
-        <p style={{ marginBottom: "0px" }}>Do not have an account?</p>
-        <p className="register-redirect">
-          <a href="/register">Lets Sign Up</a>
+      <div className='register-question'>
+        <p style={{ marginBottom: '0px' }}>Do not have an account?</p>
+        <p className='register-redirect'>
+          <a href='/register'>Lets Sign Up</a>
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginForm;
+export default LoginForm

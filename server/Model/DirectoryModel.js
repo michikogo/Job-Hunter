@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
 const Directory = new mongoose.Schema(
   {
@@ -8,11 +8,11 @@ const Directory = new mongoose.Schema(
     location: { type: String, required: true },
     dateApplied: { type: String },
     linkedAccounts: { type: String },
-    status: { type: String, required: true },
+    status: { type: String, required: true }
   },
-  { collection: "directory-data" }
-);
+  { collection: 'directory-data' }
+)
 
-const model = mongoose.model("DirectoryData", Directory);
+const model = mongoose.model('DirectoryData', Directory)
 
-module.exports = model;
+module.exports = model

@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 body {
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 a {
   text-decoration: none;
@@ -28,32 +28,90 @@ a:hover {
 /**********/
 /**********/
 .home-container {
-  display: inline-flex;
-  padding: 5rem;
+  display: grid;
+  grid-template-columns: 45% 15% 40%;
+  padding-right: 10rem;
+  padding-top: 3rem;
+  min-height: 79vh;
+}
+.home-abstract {
+  content-visibility: hidden;
+}
+.home-h1 {
+  padding-left: 10rem;
+  font-size: 2.5rem;
 }
 .home-image {
+  /* padding-top: 29vh; */
   position: absolute;
-  width: 30rem;
-  bottom: -10vh;
-  left: 0;
+  bottom: 0;
+  width: 40rem;
+}
+.home-register-section {
+  padding-bottom: 5rem;
 }
 .home-form {
-  padding-top: 5rem;
+  font-weight: normal;
+  padding-top: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
+@media (max-width: 450px) {
+  .home-abstract {
+    content-visibility: visible;
+    position: absolute;
+    margin-top: 7rem;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    width: 100%;
+  }
+}
+@media (max-width: 600px) {
+  .home-container {
+    padding: 5rem 0rem !important;
+  }
+  .home-container {
+    padding-right: 0px;
+    display: block;
+  }
+}
 @media (max-width: 941px) {
   h1 {
     text-align: center;
   }
   .home-container {
+    padding: 5rem;
     display: block;
   }
+  .home-h1 {
+    padding-left: 0px !important;
+  }
   .home-image {
-    visibility: hidden;
+    padding-top: 0px !important;
+    content-visibility: hidden !important;
+    width: 0px !important;
+  }
+  .home-register-section {
+    padding-bottom: 0rem;
   }
   .home-form {
     padding-top: 2rem;
     text-align: center;
+  }
+}
+@media (max-width: 1300px) {
+  .home-container {
+    padding-right: 5rem;
+    /* padding: 10rem; */
+    grid-template-columns: 35% 15% auto;
+  }
+  .home-h1 {
+    padding-left: 5rem;
+  }
+  .home-image {
+    width: 30rem;
   }
 }
 
