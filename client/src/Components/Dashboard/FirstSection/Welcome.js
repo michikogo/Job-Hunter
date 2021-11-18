@@ -36,14 +36,13 @@ const Welcome = ({ username, showModal, setShowModal }) => {
               type='submit'
               value='Add Application'
               className='dashboard-button-disabled'
-              onClick={handleShow}
-              disabled
             />
           ) : (
             <input
               type='submit'
               value='Add Application'
               className='custom-button'
+              onClick={handleShow}
             />
           )}
         </div>
