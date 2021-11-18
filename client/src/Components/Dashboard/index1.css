@@ -1,0 +1,63 @@
+.dashboard-hide-modal {
+  position: absolute;
+  z-index: -1;
+}
+.dashboard-background {
+  width: 100%;
+  /* margin-top: 3rem; */
+  padding-top: 3rem;
+  background-color: #ede3e4;
+  /* border-radius: 5px; */
+  text-align: -webkit-center;
+}
+.dashboard-table {
+  width: 75rem;
+  padding: 2rem;
+}
+.modal-hidden {
+  visibility: hidden;
+}
+.modal-container {
+  padding: 2rem 3rem;
+  background-color: #e4dee4;
+  border-radius: 5px;
+  color: black;
+}
+.modal-close {
+  text-align-last: end;
+  cursor: pointer;
+  font-weight: bold;
+}
+/**************/
+/* PAGINATION */
+/**************/
+ul {
+  display: inline-flex;
+  list-style-type: none;
+}
+li {
+  padding: 0.2rem 0.8rem;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+.pagination-active {
+  background: #af9fa5;
+  color: white;
+}
+.pagination {
+  background: #ede3e4;
+  padding: 0px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .modal-position {
+    width: fit-content;
+    margin: -34rem -2.85rem;
+  }
+}
+@media (min-width: 601px) and (max-width: 800px) {
+  .modal-position {
+    width: fit-content;
+  }
+}

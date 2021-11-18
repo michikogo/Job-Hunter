@@ -42,10 +42,6 @@ const Table = ({
 
   const [refresh, setRefresh] = useState('')
 
-  const onSearchChange = e => {
-    const { name, value } = e.target
-    setSearch(prev => ({ ...prev, [name]: value }))
-  }
   // Used when editing rows
   const updateOnChange = e => {
     const { name, value } = e.target
@@ -296,7 +292,7 @@ const Table = ({
             .map((e, i) => {
               return (
                 <tr key={i}>
-                  <td className='dashboard-col'>
+                  <td>
                     {currentID === i ? (
                       <div>
                         <input
@@ -313,7 +309,7 @@ const Table = ({
                       e.companyName
                     )}
                   </td>
-                  <td className='dashboard-col'>
+                  <td>
                     {currentID === i ? (
                       <div>
                         <input
@@ -330,7 +326,7 @@ const Table = ({
                       e.role
                     )}
                   </td>
-                  <td className='dashboard-col'>
+                  <td>
                     {currentID === i ? (
                       <div>
                         <input
@@ -347,7 +343,7 @@ const Table = ({
                       e.location
                     )}
                   </td>
-                  <td className='dashboard-col'>
+                  <td>
                     {currentID === i ? (
                       <div>
                         <input
@@ -364,7 +360,7 @@ const Table = ({
                       e.dateApplied
                     )}
                   </td>
-                  <td className='dashboard-col'>
+                  <td>
                     {currentID === i ? (
                       <div>
                         <input
@@ -381,7 +377,7 @@ const Table = ({
                       e.linkedAccounts
                     )}
                   </td>
-                  <td className='dashboard-col'>
+                  <td>
                     {currentID === i ? (
                       <div>
                         <select
@@ -405,10 +401,10 @@ const Table = ({
                       e.status
                     )}
                   </td>
-                  <td className={'table-action'}>
+                  <td className='table-action'>
                     {currentID === i ? (
                       <>
-                        <div style={{ textAlign: 'right' }}>
+                        <div className='table-update-button'>
                           <input
                             type='submit'
                             value='Update'
@@ -416,7 +412,7 @@ const Table = ({
                             onClick={() => handleEdit(e._id)}
                           />
                         </div>
-                        <div style={{ textAlign: 'right' }}>
+                        <div className='table-update-button'>
                           <input
                             type='submit'
                             value='Cancel'
@@ -428,21 +424,21 @@ const Table = ({
                       </>
                     ) : (
                       <>
-                        <span style={{ margin: '0px 2px' }}>
+                        <span className='table-icon-container'>
                           <img
                             src={edit}
                             alt=''
-                            className='dashboard-edit'
+                            className='table-edit'
                             onClick={() => setCurrentID(i)}
                             onMouseOver={e => (e.currentTarget.src = editHover)}
                             onMouseOut={e => (e.currentTarget.src = edit)}
                           />
                         </span>
-                        <span style={{ margin: '0px 2px' }}>
+                        <span className='table-icon-container'>
                           <img
                             src={trash}
                             alt=''
-                            className='dashboard-trash'
+                            className='table-trash'
                             onClick={() => handleDelete(e._id)}
                             onMouseOver={e =>
                               (e.currentTarget.src = trashHover)

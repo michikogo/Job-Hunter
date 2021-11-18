@@ -15,34 +15,43 @@ const Pagination = ({
   }
 
   return (
-    <ul
-      className={
-        showModal ? 'pagination modal-hide modal-background' : 'pagination'
-      }
-    >
-      {pageNumbers.map(number => (
-        <li
-          key={number}
-          className={currentNumber === number && 'pagination-active'}
-          // className={showModal && "modal-hide modal-background"}
-          onClick={() => {
-            if (currentID === '') {
-              paginate(number)
-              setCurrentNumber(number)
-            } else {
-              alert('Update or Cancel before moving to the next page')
-            }
-          }}
-        >
-          <a
-            href='/dashboard/!#'
-            className={currentNumber === number && 'pagination-active'}
-            className={showModal && 'modal-hide modal-background'}
-          >
-            {number}
-          </a>
-        </li>
-      ))}
+    <ul className='pagination'>
+      {showModal
+        ? pageNumbers.map(number => (
+            <li
+              key={number}
+              style={{
+                color: 'grey',
+                border: '1px solid grey',
+                cursor: 'default',
+                background: 'rgba(150, 150, 150, 0.8)'
+              }}
+              className={currentNumber === number && 'pagination-active'}
+            >
+              {number}
+            </li>
+          ))
+        : pageNumbers.map(number => (
+            <li
+              key={number}
+              className={currentNumber === number && 'pagination-active'}
+              onClick={() => {
+                if (currentID === '') {
+                  paginate(number)
+                  setCurrentNumber(number)
+                } else {
+                  alert('Update or Cancel before moving to the next page')
+                }
+              }}
+            >
+              <a
+                href='/dashboard/!#'
+                className={currentNumber === number && 'pagination-active'}
+              >
+                {number}
+              </a>
+            </li>
+          ))}
     </ul>
   )
 }

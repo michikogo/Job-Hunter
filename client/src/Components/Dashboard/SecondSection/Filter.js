@@ -15,7 +15,7 @@ const Filter = ({
   }
 
   return (
-    <span className='table-filter'>
+    <span className='filter-container'>
       {filter.showSearch && (
         <input
           name={searchName}

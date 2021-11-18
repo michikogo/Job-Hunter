@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { inbox } from '../../../Assets'
+import FilterButton from './FilterButton'
 import Pagination from './Pagination'
-import Search from './Search'
 import Table from './Table'
 
-const SecondSection = ({ showModal, userData }) => {
+const Main = ({ showModal, userData, loading }) => {
   const initialSearch = {
     searchCompanyName: '',
     searchRole: '',
@@ -41,11 +41,12 @@ const SecondSection = ({ showModal, userData }) => {
   const paginate = pageNumber => {
     setCurrentPage(pageNumber)
   }
-
+  // Clear data when hiding sort
   const handleHideSort = () => {
     setSortCol({ ...initialSort })
     setFilter(prev => ({ ...prev, showSort: false }))
   }
+  // Clear data when hiding search
   const handleHideSearch = () => {
     setSearch({ ...initialSearch })
     setFilter(prev => ({ ...prev, showSearch: false }))
@@ -54,49 +55,22 @@ const SecondSection = ({ showModal, userData }) => {
   return (
     <div
       class={
-        showModal ? 'dashboard-background modal-grey' : 'dashboard-background'
+        showModal ? 'section2-background modal-grey' : 'section2-background'
       }
     >
-      {/* <Search search={search} setSearch={setSearch} /> */}
-      <div style={{ textAlign: 'right', paddingRight: '4rem' }}>
-        {filter.showSort === false ? (
-          <button
-            type='submit'
-            className='custom-button'
-            style={{ marginRight: '2rem' }}
-            onClick={() => setFilter(prev => ({ ...prev, showSort: true }))}
-          >
-            Show Sort
-          </button>
-        ) : (
-          <button
-            type='submit'
-            className='custom-button'
-            style={{ marginRight: '2rem' }}
-            onClick={handleHideSort}
-          >
-            Hide Sort
-          </button>
-        )}
-        {filter.showSearch === false ? (
-          <button
-            type='submit'
-            className='custom-button'
-            onClick={() => setFilter(prev => ({ ...prev, showSearch: true }))}
-          >
-            Show Search
-          </button>
-        ) : (
-          <button
-            type='submit'
-            className='custom-button'
-            onClick={handleHideSearch}
-          >
-            Hide Search
-          </button>
-        )}
-      </div>
-      {userData.length ? (
+      <FilterButton
+        filter={filter}
+        setFilter={setFilter}
+        handleHideSort={handleHideSort}
+        handleHideSearch={handleHideSearch}
+      />
+      {!loading ? (
+        <div className='loading-container'>
+          <img src={inbox} alt='' width='100' />
+          <br />
+          <h3>Fetching Data</h3>
+        </div>
+      ) : userData.length ? (
         <>
           <Table
             userData={currentPosts}
@@ -117,7 +91,7 @@ const SecondSection = ({ showModal, userData }) => {
           />
         </>
       ) : (
-        <div style={{ padding: '10rem 0rem' }}>
+        <div className='loading-container'>
           <img src={inbox} alt='' width='100' />
           <br />
           <small>Start Applying</small>
@@ -127,4 +101,4 @@ const SecondSection = ({ showModal, userData }) => {
   )
 }
 
-export default SecondSection
+export default Main
