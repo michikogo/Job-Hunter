@@ -38,13 +38,17 @@ const Filter = ({
         ))}
       {filter.showSort &&
         (showModal ? (
-          <select
-            value={sortCol[sortName]}
+          <input
+            value={
+              sortCol[sortName] === 'asc'
+                ? 'Ascending'
+                : sortCol[sortName] === 'desc'
+                ? 'Descending'
+                : ''
+            }
             className='register-input search-input'
             disabled
-          >
-            <option selected value=''></option>
-          </select>
+          />
         ) : (
           <select
             type='select'
