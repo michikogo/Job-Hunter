@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import jwt from 'jsonwebtoken'
 import './index.css'
 
-import FirstSection from './FirstSection/Welcome'
-import SecondSection from './SecondSection/Main'
+import Welcome from './FirstSection/Welcome'
+import Main from './SecondSection/Main'
 
 const Dashboard = () => {
   const naviage = useNavigate()
@@ -12,6 +12,7 @@ const Dashboard = () => {
   const [showModal, setShowModal] = useState(false)
   const [userData, setUserData] = useState([])
   const [loading, setLoading] = useState(false)
+  const [regenerate, setRegenerate] = useState(false)
 
   const populateTable = async () => {
     const request = await fetch('http://localhost:8000/directory/contents', {
@@ -30,35 +31,33 @@ const Dashboard = () => {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(true)
-      const token = localStorage.getItem('token')
-      if (token) {
-        const user = jwt.decode(token)
-        if (!user) {
-          localStorage.removeItem('token')
-          naviage('/login')
-        } else {
-          populateTable()
-        }
-      } else {
+    setLoading(true)
+    const token = localStorage.getItem('token')
+    if (token) {
+      const user = jwt.decode(token)
+      if (!user) {
+        localStorage.removeItem('token')
         naviage('/login')
+      } else {
+        populateTable()
       }
-    }, 1000)
-    setLoading(false)
-    return () => clearTimeout(timer)
-  }, [])
+    } else {
+      naviage('/login')
+    }
+  }, [regenerate])
 
   // refresh when another one is added to the list
   useEffect(() => {}, [showModal])
   return (
     <div>
-      <FirstSection
+      <Welcome
         username={username}
         showModal={showModal}
         setShowModal={setShowModal}
       />
-      <SecondSection
+      <Main
+        regenerate={regenerate}
+        setRegenerate={setRegenerate}
         showModal={showModal}
         userData={userData}
         loading={loading}

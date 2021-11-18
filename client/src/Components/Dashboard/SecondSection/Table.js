@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-import { trash, trashHover, edit, editHover } from '../../../Assets/index'
 import Filter from './Filter'
+import TableContents from './TableContents'
 
 const Table = ({
+  regenerate,
+  setRegenerate,
+  showModal,
   userData,
   currentID,
   setCurrentID,
@@ -13,86 +16,19 @@ const Table = ({
   sortCol,
   setSortCol
 }) => {
-  const initialUpdate = {
-    updateCompanyName: '',
-    updateRole: '',
-    updateLocation: '',
-    updateDateApplied: '',
-    updateLinkedAccounts: '',
-    updateStatus: ''
-  }
-  const [
-    {
-      updateCompanyName,
-      updateRole,
-      updateLocation,
-      updateDateApplied,
-      updateLinkedAccounts,
-      updateStatus
-    },
-    setUpdateRow
-  ] = useState(initialUpdate)
-
-  const [refresh, setRefresh] = useState('')
-
-  // Used when editing rows
-  const updateOnChange = e => {
-    const { name, value } = e.target
-    setUpdateRow(prev => ({ ...prev, [name]: value }))
-  }
-  // Remove Inputs when cancel or submit
-  const handleCancel = () => {
-    setCurrentID('')
-    setUpdateRow(prev => ({
-      ...prev,
-      initialUpdate
-    }))
-    setRefresh(!refresh)
-  }
-  // Send updated data to backend
-  const handleEdit = async id => {
-    const updateData = {
-      companyName: updateCompanyName,
-      role: updateRole,
-      location: updateLocation,
-      dateApplied: updateDateApplied,
-      linkedAccounts: updateLinkedAccounts,
-      status: updateStatus
-    }
-    const req = await fetch(`http://localhost:8000/directory/contents/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-access-token': localStorage.getItem('token')
-      },
-      body: JSON.stringify(updateData)
-    })
-    const data = await req.json()
-    console.log(data)
-    if (data.status === 'ok') {
-      handleCancel()
-    } else {
-      alert(data.error)
-    }
-  }
-  // Let backend know that delete the id
-  const handleDelete = id => {
-    fetch(`http://localhost:8000/directory/contents/${id}`, {
-      method: 'DELETE'
-    })
-    setRefresh(!refresh)
-  }
-
-  useEffect(() => {}, [refresh])
-
   return (
-    <div className='table-container'>
+    <div
+      className={
+        showModal ? 'table-container table-disabled ' : 'table-container'
+      }
+    >
       <table className='table-dashboard'>
         <tr className='table-head'>
-          <th>
+          <th className={showModal && 'table-text-disabled'}>
             <span>Company Name</span>
             <br />
             <Filter
+              showModal={showModal}
               filter={filter}
               search={search}
               setSearch={setSearch}
@@ -102,10 +38,11 @@ const Table = ({
               sortName='sortCompanyName'
             />
           </th>
-          <th>
+          <th className={showModal && 'table-text-disabled'}>
             <span>Role</span>
             <br />
             <Filter
+              showModal={showModal}
               filter={filter}
               search={search}
               setSearch={setSearch}
@@ -115,10 +52,11 @@ const Table = ({
               sortName='sortRole'
             />
           </th>
-          <th>
+          <th className={showModal && 'table-text-disabled'}>
             <span>Location</span>
             <br />
             <Filter
+              showModal={showModal}
               filter={filter}
               search={search}
               setSearch={setSearch}
@@ -128,10 +66,11 @@ const Table = ({
               sortName='sortLocation'
             />
           </th>
-          <th>
+          <th className={showModal && 'table-text-disabled'}>
             <span>Date Applied</span>
             <br />
             <Filter
+              showModal={showModal}
               filter={filter}
               search={search}
               setSearch={setSearch}
@@ -141,10 +80,11 @@ const Table = ({
               sortName='sortDateApplied'
             />
           </th>
-          <th>
+          <th className={showModal && 'table-text-disabled'}>
             <span>Linked Accounts</span>
             <br />
             <Filter
+              showModal={showModal}
               filter={filter}
               search={search}
               setSearch={setSearch}
@@ -154,10 +94,11 @@ const Table = ({
               sortName='sortLinkedAccounts'
             />
           </th>
-          <th>
+          <th className={showModal && 'table-text-disabled'}>
             <span>Status</span>
             <br />
             <Filter
+              showModal={showModal}
               filter={filter}
               search={search}
               setSearch={setSearch}
@@ -167,7 +108,7 @@ const Table = ({
               sortName='sortStatus'
             />
           </th>
-          <th>Action</th>
+          <th className={showModal && 'table-text-disabled'}>Action</th>
         </tr>
         {userData &&
           userData
@@ -284,165 +225,15 @@ const Table = ({
             })
             .map((e, i) => {
               return (
-                <tr key={i}>
-                  <td>
-                    {currentID === i ? (
-                      <div>
-                        <input
-                          name='updateCompanyName'
-                          type='text'
-                          placeholder={e.companyName}
-                          value={updateCompanyName}
-                          className='register-input'
-                          style={{ width: '10rem' }}
-                          onChange={updateOnChange}
-                        />
-                      </div>
-                    ) : (
-                      e.companyName
-                    )}
-                  </td>
-                  <td>
-                    {currentID === i ? (
-                      <div>
-                        <input
-                          name='updateRole'
-                          type='text'
-                          placeholder={e.role}
-                          value={updateRole}
-                          className='register-input'
-                          style={{ width: '10rem' }}
-                          onChange={updateOnChange}
-                        />
-                      </div>
-                    ) : (
-                      e.role
-                    )}
-                  </td>
-                  <td>
-                    {currentID === i ? (
-                      <div>
-                        <input
-                          name='updateLocation'
-                          type='text'
-                          placeholder={e.location}
-                          value={updateLocation}
-                          className='register-input'
-                          style={{ width: '10rem' }}
-                          onChange={updateOnChange}
-                        />
-                      </div>
-                    ) : (
-                      e.location
-                    )}
-                  </td>
-                  <td>
-                    {currentID === i ? (
-                      <div>
-                        <input
-                          name='updateDateApplied'
-                          type='date'
-                          placeholder={e.dateApplied}
-                          value={updateDateApplied}
-                          className='register-input'
-                          style={{ width: '10rem' }}
-                          onChange={updateOnChange}
-                        />
-                      </div>
-                    ) : (
-                      e.dateApplied
-                    )}
-                  </td>
-                  <td>
-                    {currentID === i ? (
-                      <div>
-                        <input
-                          name='updateLinkedAccounts'
-                          type='text'
-                          placeholder={e.linkedAccounts}
-                          value={updateLinkedAccounts}
-                          className='register-input'
-                          style={{ width: '10rem' }}
-                          onChange={updateOnChange}
-                        />
-                      </div>
-                    ) : (
-                      e.linkedAccounts
-                    )}
-                  </td>
-                  <td>
-                    {currentID === i ? (
-                      <div>
-                        <select
-                          name='updateStatus'
-                          type='select'
-                          placeholder={e.status}
-                          value={updateStatus}
-                          className='register-input'
-                          style={{ width: '10rem' }}
-                          onChange={updateOnChange}
-                        >
-                          <option selected value=''></option>
-                          <option value='Applied'>Applied</option>
-                          <option value='Interview'>Interview</option>
-                          <option value='Technical Exam'>Technical Exam</option>
-                          <option value='Offer'>Offer</option>
-                          <option value='Rejected'>Rejected</option>
-                        </select>
-                      </div>
-                    ) : (
-                      e.status
-                    )}
-                  </td>
-                  <td className='table-action'>
-                    {currentID === i ? (
-                      <>
-                        <div className='table-update-button'>
-                          <input
-                            type='submit'
-                            value='Update'
-                            className='custom-button'
-                            onClick={() => handleEdit(e._id)}
-                          />
-                        </div>
-                        <div className='table-update-button'>
-                          <input
-                            type='submit'
-                            value='Cancel'
-                            style={{ marginTop: '0.5rem' }}
-                            className='custom-button'
-                            onClick={handleCancel}
-                          />
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <span className='table-icon-container'>
-                          <img
-                            src={edit}
-                            alt=''
-                            className='table-edit'
-                            onClick={() => setCurrentID(i)}
-                            onMouseOver={e => (e.currentTarget.src = editHover)}
-                            onMouseOut={e => (e.currentTarget.src = edit)}
-                          />
-                        </span>
-                        <span className='table-icon-container'>
-                          <img
-                            src={trash}
-                            alt=''
-                            className='table-trash'
-                            onClick={() => handleDelete(e._id)}
-                            onMouseOver={e =>
-                              (e.currentTarget.src = trashHover)
-                            }
-                            onMouseOut={e => (e.currentTarget.src = trash)}
-                          />
-                        </span>
-                      </>
-                    )}
-                  </td>
-                </tr>
+                <TableContents
+                  regenerate={regenerate}
+                  setRegenerate={setRegenerate}
+                  e={e}
+                  i={i}
+                  showModal={showModal}
+                  currentID={currentID}
+                  setCurrentID={setCurrentID}
+                />
               )
             })}
       </table>

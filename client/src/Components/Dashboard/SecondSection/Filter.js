@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Filter = ({
+  showModal,
   filter,
   search,
   setSearch,
@@ -16,33 +17,51 @@ const Filter = ({
 
   return (
     <span className='filter-container'>
-      {filter.showSearch && (
-        <input
-          name={searchName}
-          placeholder='Search'
-          type='search'
-          className='register-input search-input'
-          value={search[searchName]}
-          onChange={onSearchChange}
-        />
-      )}
-      {filter.showSort && (
-        <select
-          type='select'
-          value={sortCol[sortName]}
-          className='register-input search-input'
-          onChange={e =>
-            setSortCol(prev => ({
-              ...prev,
-              [sortName]: e.target.value
-            }))
-          }
-        >
-          <option selected value=''></option>
-          <option value='asc'>Ascending</option>
-          <option value='desc'>Descending</option>
-        </select>
-      )}
+      {filter.showSearch &&
+        (showModal ? (
+          <input
+            name={searchName}
+            placeholder='Search'
+            type='search'
+            className='register-input search-input'
+            disabled
+          />
+        ) : (
+          <input
+            name={searchName}
+            placeholder='Search'
+            type='search'
+            className='register-input search-input'
+            value={search[searchName]}
+            onChange={onSearchChange}
+          />
+        ))}
+      {filter.showSort &&
+        (showModal ? (
+          <select
+            value={sortCol[sortName]}
+            className='register-input search-input'
+            disabled
+          >
+            <option selected value=''></option>
+          </select>
+        ) : (
+          <select
+            type='select'
+            value={sortCol[sortName]}
+            className='register-input search-input'
+            onChange={e =>
+              setSortCol(prev => ({
+                ...prev,
+                [sortName]: e.target.value
+              }))
+            }
+          >
+            <option selected value=''></option>
+            <option value='asc'>Ascending</option>
+            <option value='desc'>Descending</option>
+          </select>
+        ))}
     </span>
   )
 }

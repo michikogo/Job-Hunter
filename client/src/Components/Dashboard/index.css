@@ -77,6 +77,7 @@
 .search-input {
   /* width: 20rem; */
   margin: 5px 0px 2px 0px;
+  text-align-last: auto;
 }
 .search-container {
   text-align: left;
@@ -116,9 +117,22 @@
   width: 1rem;
   cursor: default;
 }
+.table-disabled {
+  overflow: hidden;
+}
+.table-text-disabled {
+  background-color: grey;
+  color: lightgrey;
+}
+.table-contents-disabled {
+  pointer-events: none;
+}
+.table-contents-disabled:nth-child(even) {
+  background-color: lightgrey;
+}
 td,
 th {
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
   padding: 8px;
 }
 tr:nth-child(even) {
