@@ -30,7 +30,7 @@ const Filter = ({
         <select
           type='select'
           value={sortCol[sortName]}
-          className='register-input'
+          className='register-input search-input'
           onChange={e =>
             setSortCol(prev => ({
               ...prev,

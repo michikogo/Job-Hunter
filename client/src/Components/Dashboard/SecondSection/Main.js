@@ -3,6 +3,7 @@ import { inbox } from '../../../Assets'
 import FilterButton from './FilterButton'
 import Pagination from './Pagination'
 import Table from './Table'
+import TableOverlapped from './TableOverlapped'
 
 const Main = ({ showModal, userData, loading }) => {
   const initialSearch = {
@@ -73,16 +74,29 @@ const Main = ({ showModal, userData, loading }) => {
         </div>
       ) : userData.length ? (
         <>
-          <Table
-            userData={currentPosts}
-            currentID={currentID}
-            setCurrentID={setCurrentID}
-            search={search}
-            setSearch={setSearch}
-            filter={filter}
-            sortCol={sortCol}
-            setSortCol={setSortCol}
-          />
+          {showModal ? (
+            <TableOverlapped
+              userData={currentPosts}
+              currentID={currentID}
+              setCurrentID={setCurrentID}
+              search={search}
+              setSearch={setSearch}
+              filter={filter}
+              sortCol={sortCol}
+              setSortCol={setSortCol}
+            />
+          ) : (
+            <Table
+              userData={currentPosts}
+              currentID={currentID}
+              setCurrentID={setCurrentID}
+              search={search}
+              setSearch={setSearch}
+              filter={filter}
+              sortCol={sortCol}
+              setSortCol={setSortCol}
+            />
+          )}
           <Pagination
             showModal={showModal}
             currentID={currentID}

@@ -7,10 +7,10 @@ import trashHover from './trashHover.png'
 import edit from './edit.png'
 import editHover from './editHover.png'
 import inbox from './inbox.png'
-import upActive from './upActive.png'
-import downActive from './downActive.png'
 import abstract from './abstract.png'
 import abstract2 from './abstract2.png'
+import disabledTrash from './disabledTrash.png'
+import disabledEdit from './disabledEdit.png'
 
 export {
   logo,
@@ -22,8 +22,8 @@ export {
   edit,
   editHover,
   inbox,
-  upActive,
-  downActive,
   abstract,
-  abstract2
+  abstract2,
+  disabledEdit,
+  disabledTrash
 }

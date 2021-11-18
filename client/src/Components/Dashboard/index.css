@@ -68,15 +68,15 @@
 /**************/
 .filter-button-container {
   text-align: right;
-  padding-right: 4rem;
+  padding-right: 35px;
 }
 .filter-container {
   /* padding-left: 5px; */
-  display: inline-grid;
+  display: grid;
 }
 .search-input {
   /* width: 20rem; */
-  margin: 5px 0px;
+  margin: 5px 0px 2px 0px;
 }
 .search-container {
   text-align: left;
@@ -107,15 +107,15 @@
 .table-icon-container {
   margin: 0px 2px;
 }
-.table-edit {
-  width: 1rem;
-  cursor: pointer;
-}
+.table-edit,
 .table-trash {
   width: 1rem;
   cursor: pointer;
 }
-
+.table-disable-icon {
+  width: 1rem;
+  cursor: default;
+}
 td,
 th {
   border: 1px solid #ddd;
@@ -131,7 +131,7 @@ th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #6ea4bf;
+  background-color: #92898a;
   color: white;
 }
 
@@ -144,7 +144,7 @@ ul {
 }
 li {
   padding: 0.2rem 0.8rem;
-  border: 1px solid #000000;
+  border: 1px solid grey;
   box-sizing: border-box;
 }
 .pagination-active {
@@ -172,4 +172,15 @@ li {
   text-align-last: end;
   cursor: pointer;
   font-weight: bold;
+}
+@media (max-width: 600px) {
+  .modal-position {
+    width: fit-content;
+    margin: -34rem -2.85rem;
+  }
+}
+@media (min-width: 601px) and (max-width: 800px) {
+  .modal-position {
+    width: fit-content;
+  }
 }

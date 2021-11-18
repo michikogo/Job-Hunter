@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {
-  trash,
-  trashHover,
-  edit,
-  editHover,
-  downActive,
-  upActive
-} from '../../../Assets/index'
+import { trash, trashHover, edit, editHover } from '../../../Assets/index'
 import Filter from './Filter'
 
 const Table = ({
