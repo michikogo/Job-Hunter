@@ -1,28 +1,47 @@
 import React, { useState } from 'react'
+
+import InvalidInput from './Common/InvalidInput'
+import ErrorMessage from './Common/ErrorMessage'
 import './index.css'
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('')
-  const [emailChecker, setEmailChecker] = useState(false)
-  const [password, setPassword] = useState('')
-  const [passwordChecker, setPasswordChecker] = useState(false)
+  const initialInput = {
+    email: '',
+    password: ''
+  }
+  const [loginInput, setLoginInput] = useState(initialInput)
+  const initialChecker = {
+    emailChecker: false,
+    passwordChecker: false
+  }
+  const [checkLogin, setCheckLogin] = useState(initialChecker)
   const [errorLogin, setErrorLogin] = useState(false)
 
-  const loginUser = async event => {
-    event.preventDefault()
-    if (passwordChecker === '') {
-      setPasswordChecker(true)
+  // Changing states
+  const onChange = e => {
+    const { name, value } = e.target
+    setLoginInput(prevState => ({ ...prevState, [name]: value }))
+  }
+  // Trigger error message if empty
+  const isValid = () => {
+    if (loginInput.email === '') {
+      setCheckLogin(prevState => ({ ...prevState, emailChecker: true }))
     } else {
-      setPasswordChecker(false)
+      setCheckLogin(prevState => ({ ...prevState, emailChecker: false }))
     }
-    if (emailChecker === '') {
-      setEmailChecker(true)
+    if (loginInput.password === '') {
+      setCheckLogin(prevState => ({ ...prevState, passwordChecker: true }))
     } else {
-      setEmailChecker(false)
+      setCheckLogin(prevState => ({ ...prevState, passwordChecker: false }))
     }
-
-    if (!emailChecker && !passwordChecker) {
-      const createData = { email: email, password: password }
+  }
+  // Fetch the account
+  const fetchAccount = async () => {
+    if (loginInput.email !== '' && loginInput.password !== '') {
+      const createData = {
+        email: loginInput.email,
+        password: loginInput.password
+      }
       const response = await fetch('http://localhost:8000/user/login', {
         method: 'POST',
         headers: {
@@ -30,12 +49,11 @@ const LoginForm = () => {
         },
         body: JSON.stringify(createData)
       })
-
       const data = await response.json()
       console.log(data)
 
+      // promise returns user then we redirect
       if (data.user) {
-        // to see localstorage in console.log
         localStorage.setItem('token', data.user)
         setErrorLogin(false)
         window.location.href = '/dashboard'
@@ -44,45 +62,49 @@ const LoginForm = () => {
       }
     }
   }
+  const loginUser = event => {
+    event.preventDefault()
+    isValid()
+    fetchAccount()
+  }
 
   return (
     <div className='register-container'>
       <h1 style={{ textAlign: 'center' }}>Login</h1>
       <div className='login-error'>
-        <p className={errorLogin ? 'error-message' : 'error-message-hide'}>
-          Please check email and password
-        </p>
+        <InvalidInput
+          showMessage={errorLogin}
+          message='Please check email and/or password'
+        />
       </div>
       <form onSubmit={loginUser}>
         <div className='form-input'>
           <label className='register-label'>Email</label>
           <input
-            type='text'
-            value={email}
+            name='email'
+            type='email'
+            value={loginInput.email}
             className='register-input'
-            onChange={e => setEmail(e.target.value)}
+            onChange={onChange}
           />
-          <div></div>
-          <small
-            className={emailChecker ? 'error-message' : 'error-message-hide'}
-          >
-            Missing email
-          </small>
+          <ErrorMessage
+            showMessage={checkLogin.emailChecker}
+            message='Invalid email'
+          />
         </div>
         <div className='form-input'>
           <label className='register-label'>Password</label>
           <input
+            name='password'
             type='password'
-            value={password}
+            value={loginInput.password}
             className='register-input'
-            onChange={e => setPassword(e.target.value)}
+            onChange={onChange}
           />
-          <div></div>
-          <small
-            className={passwordChecker ? 'error-message' : 'error-message-hide'}
-          >
-            Missing password
-          </small>
+          <ErrorMessage
+            showMessage={checkLogin.passwordChecker}
+            message='Invalid password'
+          />
         </div>
         <div className='register-button'>
           <input type='submit' value='Login' className='custom-button' />
