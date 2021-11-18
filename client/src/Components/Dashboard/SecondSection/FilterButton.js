@@ -1,6 +1,7 @@
 import React from 'react'
 
 const FilterButton = ({
+  showModal,
   filter,
   setFilter,
   handleHideSort,
@@ -9,13 +10,31 @@ const FilterButton = ({
   return (
     <div className='filter-button-container'>
       {filter.showSort === false ? (
+        showModal ? (
+          <button
+            type='submit'
+            className='dashboard-button-disabled'
+            style={{ marginRight: '2rem' }}
+          >
+            Show Sort
+          </button>
+        ) : (
+          <button
+            type='submit'
+            className='custom-button'
+            style={{ marginRight: '2rem' }}
+            onClick={() => setFilter(prev => ({ ...prev, showSort: true }))}
+          >
+            Show Sort
+          </button>
+        )
+      ) : showModal ? (
         <button
           type='submit'
-          className='custom-button'
+          className='dashboard-button-disabled'
           style={{ marginRight: '2rem' }}
-          onClick={() => setFilter(prev => ({ ...prev, showSort: true }))}
         >
-          Show Sort
+          Hide Sort
         </button>
       ) : (
         <button
@@ -28,12 +47,22 @@ const FilterButton = ({
         </button>
       )}
       {filter.showSearch === false ? (
-        <button
-          type='submit'
-          className='custom-button'
-          onClick={() => setFilter(prev => ({ ...prev, showSearch: true }))}
-        >
-          Show Search
+        showModal ? (
+          <button type='submit' className='dashboard-button-disabled'>
+            Show Search
+          </button>
+        ) : (
+          <button
+            type='submit'
+            className='custom-button'
+            onClick={() => setFilter(prev => ({ ...prev, showSearch: true }))}
+          >
+            Show Search
+          </button>
+        )
+      ) : showModal ? (
+        <button type='submit' className='dashboard-button-disabled'>
+          Hide Search
         </button>
       ) : (
         <button

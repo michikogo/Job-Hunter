@@ -59,6 +59,7 @@ const Main = ({ showModal, userData, loading }) => {
       }
     >
       <FilterButton
+        showModal={showModal}
         filter={filter}
         setFilter={setFilter}
         handleHideSort={handleHideSort}
