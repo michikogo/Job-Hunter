@@ -23,25 +23,21 @@ const Modal = ({ handleClose }) => {
     } else {
       setCheckCompanyName(false)
     }
-
     if (role === '') {
       setCheckRole(true)
     } else {
       setCheckRole(false)
     }
-
     if (location === '') {
       setCheckLocation(true)
     } else {
       setCheckLocation(false)
     }
-
     if (dateApplied === '') {
       setCheckDateApplied(true)
     } else {
       setCheckDateApplied(false)
     }
-
     if (status === '') {
       setCheckStatus(true)
     } else {
@@ -74,7 +70,6 @@ const Modal = ({ handleClose }) => {
           status
         })
       })
-
       const data = await req.json()
       if (data.status === 'ok') {
         handleClose()
