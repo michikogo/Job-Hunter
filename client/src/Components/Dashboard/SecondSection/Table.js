@@ -172,6 +172,7 @@ const Table = ({
                     )
                 })
                 .sort((firstelement, secondelement) => {
+                  // sort Company Name
                   if (sortCol.sortCompanyName === 'asc') {
                     return firstelement.companyName.toLowerCase() >
                       secondelement.companyName.toLowerCase()
@@ -182,7 +183,7 @@ const Table = ({
                       secondelement.companyName.toLowerCase()
                       ? 1
                       : -1
-                  }
+                  } // sort Role
                   if (sortCol.sortRole === 'asc') {
                     return firstelement.role.toLowerCase() >
                       secondelement.role.toLowerCase()
@@ -193,7 +194,7 @@ const Table = ({
                       secondelement.role.toLowerCase()
                       ? 1
                       : -1
-                  }
+                  } // sort Location
                   if (sortCol.sortLocation === 'asc') {
                     return firstelement.location.toLowerCase() >
                       secondelement.location.toLowerCase()
@@ -204,7 +205,7 @@ const Table = ({
                       secondelement.location.toLowerCase()
                       ? 1
                       : -1
-                  }
+                  } // sort Date Applied
                   if (sortCol.sortDateApplied === 'asc') {
                     return firstelement.dateApplied.toLowerCase() >
                       secondelement.dateApplied.toLowerCase()
@@ -215,7 +216,7 @@ const Table = ({
                       secondelement.dateApplied.toLowerCase()
                       ? 1
                       : -1
-                  }
+                  } // sort Linked Accounts
                   if (sortCol.sortLinkedAccounts === 'asc') {
                     return firstelement.linkedAccounts.toLowerCase() >
                       secondelement.linkedAccounts.toLowerCase()
@@ -226,7 +227,7 @@ const Table = ({
                       secondelement.linkedAccounts.toLowerCase()
                       ? 1
                       : -1
-                  }
+                  } // sort Status
                   if (sortCol.sortStatus === 'asc') {
                     return firstelement.status.toLowerCase() >
                       secondelement.status.toLowerCase()

@@ -11,10 +11,12 @@ const Filter = ({
   sortName,
   handleClearSort
 }) => {
+  // Append letters to create word to search
   const onSearchChange = e => {
     const { name, value } = e.target
     setSearch(prev => ({ ...prev, [name]: value }))
   }
+  // Clear old sort and sort new one
   const onSortChange = e => {
     handleClearSort()
     setSortCol(prev => ({

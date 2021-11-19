@@ -5,6 +5,7 @@ import Pagination from './Pagination'
 import Table from './Table'
 
 const Main = ({ regenerate, setRegenerate, showModal, userData, loading }) => {
+  // state for search
   const initialSearch = {
     searchCompanyName: '',
     searchRole: '',
@@ -14,12 +15,18 @@ const Main = ({ regenerate, setRegenerate, showModal, userData, loading }) => {
     searchStatus: ''
   }
   const [search, setSearch] = useState(initialSearch)
+
+  // storing the currentID when user clicks
   const [currentID, setCurrentID] = useState('')
+
+  // to show the filter input field and
   const initialFilter = {
     showSearch: false,
     showSort: false
   }
   const [filter, setFilter] = useState(initialFilter)
+
+  // state for initial sort
   const initialSort = {
     sortCompanyName: '',
     sortRole: '',
@@ -29,6 +36,8 @@ const Main = ({ regenerate, setRegenerate, showModal, userData, loading }) => {
     sortStatus: ''
   }
   const [sortCol, setSortCol] = useState(initialSort)
+
+  // for pagination start from page 1 and up to 10 rows per page
   const [currentPage, setCurrentPage] = useState(1)
   const [postsPerPage] = useState(10)
 
@@ -37,7 +46,7 @@ const Main = ({ regenerate, setRegenerate, showModal, userData, loading }) => {
   const indexOfFirstPost = indexOfLastPost - postsPerPage
   const currentPosts = userData.slice(indexOfFirstPost, indexOfLastPost)
 
-  // Change page
+  // Changing the page
   const paginate = pageNumber => {
     setCurrentPage(pageNumber)
   }
