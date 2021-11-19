@@ -7,7 +7,9 @@ import Required from '../Forms/Common/Required'
 import './index.css'
 
 const HomeRegister = () => {
+  // to redirect to another page
   const navigate = useNavigate()
+  // useStates of fields
   const inputInitial = {
     firstName: '',
     lastName: '',
@@ -19,6 +21,7 @@ const HomeRegister = () => {
     { firstName, lastName, email, password, confirmPassword },
     setRegisterInput
   ] = useState(inputInitial)
+  // Use to show error message for specific fields
   const initialChecker = {
     checkerFirstName: '',
     checkerLastName: '',
@@ -29,9 +32,10 @@ const HomeRegister = () => {
     { checkerFirstName, checkerLastName, checkerEmail, checkerPassword },
     setCheckRegister
   ] = useState(initialChecker)
+  // to show error message when there is error
   const [errorRegister, setErrorRegister] = useState(false)
 
-  // onChange
+  // update value of input field
   const registerInputOnChange = e => {
     const { name, value } = e.target
     setRegisterInput(prevState => ({ ...prevState, [name]: value }))
@@ -59,7 +63,7 @@ const HomeRegister = () => {
       setCheckRegister(prevState => ({ ...prevState, checkerEmail: false }))
     }
   }
-  // Adding user
+  // Adding user if all fields are valid
   const createUser = async () => {
     if (
       checkerFirstName === false &&
@@ -77,7 +81,7 @@ const HomeRegister = () => {
         body: JSON.stringify(createData)
       })
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       if (data.status === 'ok') {
         navigate('/dashboard')
       } else {
@@ -85,6 +89,7 @@ const HomeRegister = () => {
       }
     }
   }
+  // acts as main function
   const registerUser = e => {
     e.preventDefault()
     isValid()

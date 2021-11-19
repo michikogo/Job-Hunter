@@ -5,18 +5,17 @@ import './index.css'
 const Header = () => {
   const [authNavBar, setAuthNavBar] = useState(false)
 
+  // check auth to change header
   useEffect(() => {
     const token = localStorage.getItem('token')
-
     if (token !== null) {
-      // console.log("Auth", token);
       setAuthNavBar(true)
     } else {
-      // console.log("Unauth: ", token);
       setAuthNavBar(false)
     }
   }, [])
 
+  // removing token when logging out
   const handleLogout = () => {
     localStorage.removeItem('token')
   }
