@@ -169,7 +169,7 @@ const TableContents = ({
               style={{ width: '10rem' }}
               onChange={updateOnChange}
             >
-              <option selected value=''></option>
+              <option defaultValue value=''></option>
               <option value='Applied'>Applied</option>
               <option value='Interview'>Interview</option>
               <option value='Technical Exam'>Technical Exam</option>

@@ -54,6 +54,7 @@
 /*************/
 .section2-background {
   width: 100%;
+  min-height: 44vh;
   /* margin-top: 3rem; */
   padding-top: 3rem;
   background-color: #ede3e4;

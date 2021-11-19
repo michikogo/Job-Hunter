@@ -65,7 +65,7 @@ const Filter = ({
             className='register-input search-input'
             onChange={e => onSortChange(e)}
           >
-            <option selected value=''></option>
+            <option defaultValue value=''></option>
             <option value='asc'>Ascending</option>
             <option value='desc'>Descending</option>
           </select>

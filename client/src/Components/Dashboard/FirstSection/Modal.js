@@ -175,7 +175,7 @@ const Modal = ({ handleClose }) => {
             className='register-input'
             onChange={e => setStatus(e.target.value)}
           >
-            <option selected value=''></option>
+            <option defaultValue value=''></option>
             <option value='Applied'>Applied</option>
             <option value='Interview'>Interview</option>
             <option value='Technical Exam'>Technical Exam</option>
