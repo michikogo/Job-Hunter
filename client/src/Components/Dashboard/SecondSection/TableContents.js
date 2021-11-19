@@ -153,6 +153,11 @@ const TableContents = ({
               onChange={updateOnChange}
             />
           </div>
+        ) : e.linkedAccounts.startsWith('https') ||
+          e.linkedAccounts.startsWith('http') ? (
+          <a href={e.linkedAccounts} target='_blank'>
+            <p>{e.linkedAccounts}</p>
+          </a>
         ) : (
           <p>{e.linkedAccounts}</p>
         )}
@@ -189,7 +194,7 @@ const TableContents = ({
               <p className='table-technicalExam'>{e.status}</p>
             )}
             {e.status === 'Offer' && <p className='table-offer'>{e.status}</p>}
-            {e.status === 'Reject' && (
+            {e.status === 'Rejected' && (
               <p className='table-reject'>{e.status}</p>
             )}
           </>
