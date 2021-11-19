@@ -1,5 +1,6 @@
 // Import npm packages
 require("dotenv").config({ path: "./config.env" });
+const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -24,6 +25,17 @@ mongoose.connection.once("open", () => {
 
 app.use("/user", UserController);
 app.use("/directory", DirectoryController);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API running");
+  });
+}
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
