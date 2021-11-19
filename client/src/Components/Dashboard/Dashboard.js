@@ -1,49 +1,50 @@
-import React, { useState, useEffect } from 'react'
-import jwt from 'jsonwebtoken'
-import './index.css'
+import React, { useState, useEffect } from "react";
+import jwt from "jsonwebtoken";
+import "./index.css";
 
-import Welcome from './FirstSection/Welcome'
-import Main from './SecondSection/Main'
+import Welcome from "./FirstSection/Welcome";
+import Main from "./SecondSection/Main";
 
 const Dashboard = () => {
-  const [username, setUsername] = useState('') // fetched username is stored here
-  const [showModal, setShowModal] = useState(false) // bool to know if the modal is seen
-  const [userData, setUserData] = useState([]) // fetched data is stored here
-  const [loading, setLoading] = useState(false) // Showing loading image if loading
-  const [regenerate, setRegenerate] = useState(false) // refresh function for rerendering
+  const [username, setUsername] = useState(""); // fetched username is stored here
+  const [showModal, setShowModal] = useState(false); // bool to know if the modal is seen
+  const [userData, setUserData] = useState([]); // fetched data is stored here
+  const [loading, setLoading] = useState(false); // Showing loading image if loading
+  const [regenerate, setRegenerate] = useState(false); // refresh function for rerendering
 
   // Get data and username
   const populateTable = async () => {
-    const request = await fetch('http://localhost:8000/directory/contents', {
+    // const request = await fetch('http://localhost:8000/directory/contents', {
+    const request = await fetch("/directory/contents", {
       headers: {
-        'x-access-token': localStorage.getItem('token')
-      }
-    })
-    const data = await request.json()
+        "x-access-token": localStorage.getItem("token"),
+      },
+    });
+    const data = await request.json();
     // console.log(data)
-    setUserData(data.content)
-    if (data.status === 'ok') {
-      setUsername(data.name)
+    setUserData(data.content);
+    if (data.status === "ok") {
+      setUsername(data.name);
     } else {
-      alert(data.error)
+      alert(data.error);
     }
-  }
+  };
   // rerendering and fetch data every refresh and modal state
   useEffect(() => {
-    setLoading(true)
-    const token = localStorage.getItem('token')
+    setLoading(true);
+    const token = localStorage.getItem("token");
     if (token) {
-      const user = jwt.decode(token)
+      const user = jwt.decode(token);
       if (!user) {
-        localStorage.removeItem('token')
-        window.location.href = '/login'
+        localStorage.removeItem("token");
+        window.location.href = "/login";
       } else {
-        populateTable()
+        populateTable();
       }
     } else {
-      window.location.href = '/login'
+      window.location.href = "/login";
     }
-  }, [regenerate, showModal])
+  }, [regenerate, showModal]);
 
   return (
     <div>
@@ -60,7 +61,7 @@ const Dashboard = () => {
         loading={loading}
       />
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
