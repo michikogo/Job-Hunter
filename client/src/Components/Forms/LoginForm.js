@@ -45,8 +45,7 @@ const LoginForm = () => {
         email: loginInput.email,
         password: loginInput.password,
       };
-      // const response = await fetch('http://localhost:8000/user/login', {
-      const response = await fetch("/user/login", {
+      const response = await fetch("http://localhost:8000/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

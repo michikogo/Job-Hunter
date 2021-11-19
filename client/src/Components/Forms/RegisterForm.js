@@ -89,8 +89,7 @@ const RegisterForm = () => {
       const name = firstName + " " + lastName;
       const createData = { name: name, email: email, password: password };
 
-      // const response = await fetch("http://localhost:8000/user/register", {
-      const response = await fetch("/user/register", {
+      const response = await fetch("http://localhost:8000/user/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
