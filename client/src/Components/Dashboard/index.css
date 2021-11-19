@@ -216,6 +216,12 @@ li {
     width: 95% !important;
     margin: -9rem auto !important;
   }
+  .dashboard-button {
+    padding-left: 1rem;
+  }
+  .dashboard-grid {
+    display: block;
+  }
 }
 @media (max-width: 800px) {
   .modal-position {

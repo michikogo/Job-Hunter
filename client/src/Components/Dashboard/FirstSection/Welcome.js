@@ -30,6 +30,24 @@ const Welcome = ({ username, showModal, setShowModal }) => {
         showModal ? 'dashboard-container modal-grey' : 'dashboard-container'
       }
     >
+      <div className='dashboard-button'>
+        <div className='dashboard-button-small-view'>
+          {showModal ? (
+            <input
+              type='submit'
+              value='Add'
+              className='dashboard-button-disabled'
+            />
+          ) : (
+            <input
+              type='submit'
+              value='Add'
+              className='custom-button'
+              onClick={handleShow}
+            />
+          )}
+        </div>
+      </div>
       <div className='dashboard-grid'>
         <h2>Hello {username}</h2>
         <div className='dashboard-button'>
@@ -44,22 +62,6 @@ const Welcome = ({ username, showModal, setShowModal }) => {
               <input
                 type='submit'
                 value='Add Application'
-                className='custom-button'
-                onClick={handleShow}
-              />
-            )}
-          </div>
-          <div className='dashboard-button-small-view'>
-            {showModal ? (
-              <input
-                type='submit'
-                value='Add'
-                className='dashboard-button-disabled'
-              />
-            ) : (
-              <input
-                type='submit'
-                value='Add'
                 className='custom-button'
                 onClick={handleShow}
               />
