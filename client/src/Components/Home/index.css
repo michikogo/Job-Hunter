@@ -18,10 +18,14 @@
   font-size: 2.5rem;
 }
 .home-image {
+  display: inline-block;
+  padding-top: 71px;
   /* padding-top: 29vh; */
-  position: absolute;
-  bottom: 0;
-  width: 40rem;
+  /* position: absolute; */
+  /* width: 40rem; */
+  /* width: 50%;
+  top: 65%; */
+  z-index: -1;
 }
 .home-register-section {
   padding-bottom: 5rem;
@@ -100,6 +104,6 @@
     padding-left: 5rem;
   }
   .home-image {
-    width: 30rem;
+    width: 30rem !important;
   }
 }
