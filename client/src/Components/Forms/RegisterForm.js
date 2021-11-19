@@ -6,6 +6,7 @@ import Required from './Common/Required'
 import './index.css'
 
 const RegisterForm = () => {
+  // used for redirecting to /dashboard
   const navigate = useNavigate()
   const inputInitial = {
     firstName: '',
@@ -18,6 +19,7 @@ const RegisterForm = () => {
     { firstName, lastName, email, password, confirmPassword },
     setRegisterInput
   ] = useState(inputInitial)
+  // used to show error messages
   const initialChecker = {
     checkerFirstName: '',
     checkerLastName: '',
@@ -28,14 +30,14 @@ const RegisterForm = () => {
     { checkerFirstName, checkerLastName, checkerEmail, checkerPassword },
     setCheckRegister
   ] = useState(initialChecker)
+  // used to show error message when fetch returns error
   const [errorRegister, setErrorRegister] = useState(false)
-
-  // onChange
+  // appending the letters to create into words
   const registerInputOnChange = e => {
     const { name, value } = e.target
     setRegisterInput(prevState => ({ ...prevState, [name]: value }))
   }
-  // check if inputs are valid
+  // Update states and show error message when it is false
   const isValid = () => {
     if (firstName === '') {
       setCheckRegister(prevState => ({ ...prevState, checkerFirstName: true }))
@@ -76,7 +78,7 @@ const RegisterForm = () => {
         body: JSON.stringify(createData)
       })
       const data = await response.json()
-      console.log(data)
+      // console.log(data)
       if (data.status === 'ok') {
         navigate('/dashboard')
       } else {
@@ -84,6 +86,7 @@ const RegisterForm = () => {
       }
     }
   }
+  // main function
   const registerUser = e => {
     e.preventDefault()
     isValid()

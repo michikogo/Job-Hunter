@@ -5,19 +5,22 @@ import ErrorMessage from './Common/ErrorMessage'
 import './index.css'
 
 const LoginForm = () => {
+  // input fields useStates
   const initialInput = {
     email: '',
     password: ''
   }
   const [loginInput, setLoginInput] = useState(initialInput)
+  // showing error message
   const initialChecker = {
     emailChecker: false,
     passwordChecker: false
   }
   const [checkLogin, setCheckLogin] = useState(initialChecker)
+  // Showing the error message when not fetched properly
   const [errorLogin, setErrorLogin] = useState(false)
 
-  // Changing states
+  // Appending the letters into words
   const onChange = e => {
     const { name, value } = e.target
     setLoginInput(prevState => ({ ...prevState, [name]: value }))
@@ -62,6 +65,7 @@ const LoginForm = () => {
       }
     }
   }
+  // Used as a main function
   const loginUser = event => {
     event.preventDefault()
     isValid()
