@@ -12,6 +12,8 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false); // Showing loading image if loading
   const [regenerate, setRegenerate] = useState(false); // refresh function for rerendering
 
+  // let user;
+
   // Get data and username
   const populateTable = async () => {
     const request = await fetch("http://localhost:8000/directory/contents", {
@@ -39,11 +41,23 @@ const Dashboard = () => {
         window.location.href = "/login";
       } else {
         populateTable();
+        // window.location.href = "/dashboard";
       }
     } else {
       window.location.href = "/login";
     }
   }, [regenerate, showModal]);
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     const user = jwt.decode(token);
+  //     if (user) {
+  //       populateTable();
+  //       window.location.href = "/dashboard";
+  //     }
+  //   }
+  // }, [user]);
 
   return (
     <div>

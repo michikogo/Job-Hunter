@@ -84,7 +84,7 @@ const RegisterForm = () => {
       checkerFirstName === false &&
       checkerLastName === false &&
       checkerEmail === false &&
-      !checkerPassword === false
+      checkerPassword === false
     ) {
       const name = firstName + " " + lastName;
       const createData = { name: name, email: email, password: password };

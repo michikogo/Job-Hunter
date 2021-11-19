@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { abstract, homeImage } from "../../Assets";
+import jwt from "jsonwebtoken";
 import HomeRegister from "./HomeRegister";
 import "./index.css";
 
 const Home = () => {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const user = jwt.decode(token);
+      if (!user) {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+      } else {
+        window.location.href = "/dashboard";
+      }
+    } else {
+      window.location.href = "/login";
+    }
+  }, []);
+
   return (
     <div className="home-container">
       <div>
