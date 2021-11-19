@@ -16,6 +16,7 @@ const Modal = ({ handleClose }) => {
   const [checkDateApplied, setCheckDateApplied] = useState(false)
   const [checkStatus, setCheckStatus] = useState(false)
 
+  // show error message for specific missing input
   const checkMissing = () => {
     console.log(status)
     if (companyName === '') {
@@ -44,7 +45,8 @@ const Modal = ({ handleClose }) => {
       setCheckStatus(false)
     }
   }
-  const updateCode = async e => {
+  // Add new application to the list
+  const addApplication = async e => {
     e.preventDefault()
     checkMissing()
 
@@ -85,7 +87,7 @@ const Modal = ({ handleClose }) => {
       <h1 style={{ textAlign: 'center', paddingBottom: '2rem' }}>
         Add Application
       </h1>
-      <form onSubmit={updateCode}>
+      <form onSubmit={addApplication}>
         <div className='form-input'>
           <label className='register-label'>
             Company Name <span style={{ color: 'red' }}>*</span>

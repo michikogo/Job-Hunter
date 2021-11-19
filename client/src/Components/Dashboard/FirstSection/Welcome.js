@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Modal from './Modal'
 
 const Welcome = ({ username, showModal, setShowModal }) => {
+  // store picked quote
   const [pickedQuote, setPickedQuote] = useState([])
-
+  // state of modal
   const handleShow = () => {
     setShowModal(true)
   }
@@ -11,6 +12,7 @@ const Welcome = ({ username, showModal, setShowModal }) => {
     setShowModal(false)
   }
 
+  // fetch quote
   useEffect(() => {
     const dailyQuote = async () => {
       const response = await fetch('https://type.fit/api/quotes')

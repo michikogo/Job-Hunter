@@ -6,12 +6,13 @@ import Welcome from './FirstSection/Welcome'
 import Main from './SecondSection/Main'
 
 const Dashboard = () => {
-  const [username, setUsername] = useState('')
-  const [showModal, setShowModal] = useState(false)
-  const [userData, setUserData] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [regenerate, setRegenerate] = useState(false)
+  const [username, setUsername] = useState('') // fetched username is stored here
+  const [showModal, setShowModal] = useState(false) // bool to know if the modal is seen
+  const [userData, setUserData] = useState([]) // fetched data is stored here
+  const [loading, setLoading] = useState(false) // Showing loading image if loading
+  const [regenerate, setRegenerate] = useState(false) // refresh function for rerendering
 
+  // Get data and username
   const populateTable = async () => {
     const request = await fetch('http://localhost:8000/directory/contents', {
       headers: {
@@ -19,7 +20,7 @@ const Dashboard = () => {
       }
     })
     const data = await request.json()
-    console.log(data)
+    // console.log(data)
     setUserData(data.content)
     if (data.status === 'ok') {
       setUsername(data.name)
@@ -27,10 +28,9 @@ const Dashboard = () => {
       alert(data.error)
     }
   }
-
+  // rerendering and fetch data every refresh and modal state
   useEffect(() => {
     setLoading(true)
-
     const token = localStorage.getItem('token')
     if (token) {
       const user = jwt.decode(token)
@@ -43,10 +43,8 @@ const Dashboard = () => {
     } else {
       window.location.href = '/login'
     }
-  }, [regenerate])
+  }, [regenerate, showModal])
 
-  // refresh when another one is added to the list
-  useEffect(() => {}, [showModal])
   return (
     <div>
       <Welcome
