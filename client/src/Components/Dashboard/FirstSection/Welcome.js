@@ -31,20 +31,38 @@ const Welcome = ({ username, showModal, setShowModal }) => {
       <div className='dashboard-grid'>
         <h2>Hello {username}</h2>
         <div className='dashboard-button'>
-          {showModal ? (
-            <input
-              type='submit'
-              value='Add Application'
-              className='dashboard-button-disabled'
-            />
-          ) : (
-            <input
-              type='submit'
-              value='Add Application'
-              className='custom-button'
-              onClick={handleShow}
-            />
-          )}
+          <div className='dashboard-button-normal-view'>
+            {showModal ? (
+              <input
+                type='submit'
+                value='Add Application'
+                className='dashboard-button-disabled'
+              />
+            ) : (
+              <input
+                type='submit'
+                value='Add Application'
+                className='custom-button'
+                onClick={handleShow}
+              />
+            )}
+          </div>
+          <div className='dashboard-button-small-view'>
+            {showModal ? (
+              <input
+                type='submit'
+                value='Add'
+                className='dashboard-button-disabled'
+              />
+            ) : (
+              <input
+                type='submit'
+                value='Add'
+                className='custom-button'
+                onClick={handleShow}
+              />
+            )}
+          </div>
         </div>
       </div>
       {pickedQuote && (

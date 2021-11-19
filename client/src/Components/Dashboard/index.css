@@ -19,6 +19,9 @@
   color: grey;
   font-size: 1rem;
 }
+.dashboard-button-small-view {
+  content-visibility: hidden;
+}
 /*************/
 /*** QUOTE ***/
 /*************/
@@ -68,7 +71,7 @@
 /**************/
 .filter-button-container {
   text-align: right;
-  padding-right: 35px;
+  padding-right: 2rem;
 }
 .filter-container {
   /* padding-left: 5px; */
@@ -92,7 +95,7 @@
   overflow-y: scroll;
 }
 .table-dashboard {
-  width: 75rem;
+  width: 90rem;
   padding: 2rem;
 }
 .table-head {
@@ -188,9 +191,22 @@ li {
   font-weight: bold;
 }
 @media (max-width: 600px) {
-  .modal-position {
+  .dash .modal-position {
     width: fit-content;
     margin: -34rem -2.85rem;
+  }
+  .dashboard-button-small-view {
+    content-visibility: inherit;
+  }
+  .dashboard-button-normal-view {
+    content-visibility: hidden;
+  }
+  .quote-container {
+    padding: 0rem 1rem;
+  }
+  .filter-button-container {
+    text-align: center;
+    padding-right: 0rem;
   }
 }
 @media (min-width: 601px) and (max-width: 800px) {
