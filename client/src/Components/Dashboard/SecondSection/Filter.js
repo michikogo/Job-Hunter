@@ -8,13 +8,20 @@ const Filter = ({
   searchName,
   sortCol,
   setSortCol,
-  sortName
+  sortName,
+  handleClearSort
 }) => {
   const onSearchChange = e => {
     const { name, value } = e.target
     setSearch(prev => ({ ...prev, [name]: value }))
   }
-
+  const onSortChange = e => {
+    handleClearSort()
+    setSortCol(prev => ({
+      ...prev,
+      [sortName]: e.target.value
+    }))
+  }
   return (
     <span className='filter-container'>
       {filter.showSearch &&
@@ -54,12 +61,7 @@ const Filter = ({
             type='select'
             value={sortCol[sortName]}
             className='register-input search-input'
-            onChange={e =>
-              setSortCol(prev => ({
-                ...prev,
-                [sortName]: e.target.value
-              }))
-            }
+            onChange={e => onSortChange(e)}
           >
             <option selected value=''></option>
             <option value='asc'>Ascending</option>

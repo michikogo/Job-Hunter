@@ -51,7 +51,10 @@ const Main = ({ regenerate, setRegenerate, showModal, userData, loading }) => {
     setSearch({ ...initialSearch })
     setFilter(prev => ({ ...prev, showSearch: false }))
   }
-
+  // Clear the updated sort array
+  const handleClearSort = () => {
+    setSortCol({ ...initialSort })
+  }
   return (
     <div
       className={
@@ -85,6 +88,7 @@ const Main = ({ regenerate, setRegenerate, showModal, userData, loading }) => {
             filter={filter}
             sortCol={sortCol}
             setSortCol={setSortCol}
+            handleClearSort={handleClearSort}
           />
           <Pagination
             showModal={showModal}

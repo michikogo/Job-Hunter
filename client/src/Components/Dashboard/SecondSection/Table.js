@@ -14,7 +14,8 @@ const Table = ({
   setSearch,
   filter,
   sortCol,
-  setSortCol
+  setSortCol,
+  handleClearSort
 }) => {
   return (
     <div
@@ -37,6 +38,7 @@ const Table = ({
                 sortCol={sortCol}
                 setSortCol={setSortCol}
                 sortName='sortCompanyName'
+                handleClearSort={handleClearSort}
               />
             </th>
             <th className={showModal ? 'table-text-disabled' : undefined}>
@@ -51,6 +53,7 @@ const Table = ({
                 sortCol={sortCol}
                 setSortCol={setSortCol}
                 sortName='sortRole'
+                handleClearSort={handleClearSort}
               />
             </th>
             <th className={showModal ? 'table-text-disabled' : undefined}>
@@ -65,6 +68,7 @@ const Table = ({
                 sortCol={sortCol}
                 setSortCol={setSortCol}
                 sortName='sortLocation'
+                handleClearSort={handleClearSort}
               />
             </th>
             <th className={showModal ? 'table-text-disabled' : undefined}>
@@ -79,6 +83,7 @@ const Table = ({
                 sortCol={sortCol}
                 setSortCol={setSortCol}
                 sortName='sortDateApplied'
+                handleClearSort={handleClearSort}
               />
             </th>
             <th className={showModal ? 'table-text-disabled' : undefined}>
@@ -93,6 +98,7 @@ const Table = ({
                 sortCol={sortCol}
                 setSortCol={setSortCol}
                 sortName='sortLinkedAccounts'
+                handleClearSort={handleClearSort}
               />
             </th>
             <th className={showModal ? 'table-text-disabled' : undefined}>
@@ -107,6 +113,7 @@ const Table = ({
                 sortCol={sortCol}
                 setSortCol={setSortCol}
                 sortName='sortStatus'
+                handleClearSort={handleClearSort}
               />
             </th>
             <th className={showModal ? 'table-text-disabled' : undefined}>
@@ -177,8 +184,6 @@ const Table = ({
                       ? 1
                       : -1
                   }
-                })
-                .sort((firstelement, secondelement) => {
                   if (sortCol.sortRole === 'asc') {
                     return firstelement.role.toLowerCase() >
                       secondelement.role.toLowerCase()
@@ -234,6 +239,7 @@ const Table = ({
                       ? 1
                       : -1
                   }
+                  return undefined
                 })
                 .map((e, i) => {
                   return (
