@@ -11,7 +11,28 @@
   display: flex;
   align-items: center;
 }
+.header-dashboard {
+  padding: 0px 1rem;
+}
 .header-col2 {
   align-self: center;
   text-align: end;
+}
+.header-small {
+  content-visibility: hidden;
+}
+
+@media (max-width: 600px) {
+  .header-small {
+    content-visibility: inherit;
+  }
+  .header-large {
+    content-visibility: hidden;
+  }
+  .header-container {
+    padding: 1rem 2rem;
+  }
+  .header-dashboard {
+    padding: 0px;
+  }
 }

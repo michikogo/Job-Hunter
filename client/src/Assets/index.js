@@ -11,6 +11,7 @@ import abstract from './abstract.png'
 import abstract2 from './abstract2.png'
 import disabledTrash from './disabledTrash.png'
 import disabledEdit from './disabledEdit.png'
+import logoSmall from './logo-small.png'
 
 export {
   logo,
@@ -25,5 +26,6 @@ export {
   abstract,
   abstract2,
   disabledEdit,
-  disabledTrash
+  disabledTrash,
+  logoSmall
 }

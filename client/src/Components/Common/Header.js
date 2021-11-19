@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { logo } from '../../Assets/index.js'
+import { logo, logoSmall } from '../../Assets/index.js'
 import './index.css'
 
 const Header = () => {
@@ -26,25 +26,33 @@ const Header = () => {
         // Signed in
         <div className='header-grid'>
           <div className='header-col1'>
-            <a href='/'>
+            <a href='/' className='header-large'>
               <img src={logo} width='150' alt='' />
             </a>
+            <a href='/' className='header-small'>
+              <img src={logoSmall} width='60' alt='' />
+            </a>
             <a href='/dashboard'>
-              <p style={{ padding: '0px 1rem' }}>Dashboard</p>
+              <p className='header-dashboard'>Dashboard</p>
             </a>
           </div>
           <div className='header-col2'>
             <a href='/' onClick={handleLogout}>
-              Logout
+              <p>Logout</p>
             </a>
           </div>
         </div>
       ) : (
         // Not signed in
         <div className='header-grid'>
-          <a href='/'>
-            <img src={logo} width='150' alt='' />
-          </a>
+          <div className='header-col1'>
+            <a href='/' className='header-large'>
+              <img src={logo} width='150' alt='' />
+            </a>
+            <a href='/' className='header-small'>
+              <img src={logoSmall} width='60' alt='' />
+            </a>
+          </div>
           <div className='header-col2'>
             <a href='/login'>Login</a>
           </div>
