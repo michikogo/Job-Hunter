@@ -71,7 +71,7 @@ const TableContents = ({
   }
 
   return (
-    <tr key={i} className={showModal && 'table-contents-disabled'}>
+    <>
       <td>
         {currentID === i ? (
           <div>
@@ -193,7 +193,7 @@ const TableContents = ({
           handleDelete={handleDelete}
         />
       </td>
-    </tr>
+    </>
   )
 }
 

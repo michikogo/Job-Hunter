@@ -26,7 +26,9 @@ const Pagination = ({
                 cursor: 'default',
                 background: 'rgba(150, 150, 150, 0.8)'
               }}
-              className={currentNumber === number && 'pagination-active'}
+              className={
+                currentNumber === number ? 'pagination-active' : undefined
+              }
             >
               {number}
             </li>
@@ -34,7 +36,9 @@ const Pagination = ({
         : pageNumbers.map(number => (
             <li
               key={number}
-              className={currentNumber === number && 'pagination-active'}
+              className={
+                currentNumber === number ? 'pagination-active' : undefined
+              }
               onClick={() => {
                 if (currentID === '') {
                   paginate(number)
@@ -46,7 +50,9 @@ const Pagination = ({
             >
               <a
                 href='/dashboard/!#'
-                className={currentNumber === number && 'pagination-active'}
+                className={
+                  currentNumber === number ? 'pagination-active' : undefined
+                }
               >
                 {number}
               </a>

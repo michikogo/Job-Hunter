@@ -54,7 +54,7 @@ const Main = ({ regenerate, setRegenerate, showModal, userData, loading }) => {
 
   return (
     <div
-      class={
+      className={
         showModal ? 'section2-background modal-grey' : 'section2-background'
       }
     >
