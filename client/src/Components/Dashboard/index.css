@@ -46,8 +46,8 @@
   right: 0;
   left: 0;
   /* bottom: 0; */
-  width: 70vw;
-  margin: -15rem auto;
+  width: 50%;
+  margin: -10rem auto;
 }
 /*************/
 /* SECTION 2 */
@@ -209,9 +209,16 @@ li {
     text-align: center;
     padding-right: 0rem;
   }
-}
-@media (min-width: 601px) and (max-width: 800px) {
+  .modal-container {
+    padding: 1rem;
+  }
   .modal-position {
-    width: fit-content;
+    width: 95% !important;
+    margin: -9rem auto !important;
+  }
+}
+@media (max-width: 800px) {
+  .modal-position {
+    width: 80%;
   }
 }
