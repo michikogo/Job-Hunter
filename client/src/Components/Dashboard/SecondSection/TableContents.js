@@ -86,7 +86,7 @@ const TableContents = ({
             />
           </div>
         ) : (
-          e.companyName
+          <p>{e.companyName}</p>
         )}
       </td>
       <td>
@@ -103,7 +103,7 @@ const TableContents = ({
             />
           </div>
         ) : (
-          e.role
+          <p>{e.role}</p>
         )}
       </td>
       <td>
@@ -120,7 +120,7 @@ const TableContents = ({
             />
           </div>
         ) : (
-          e.location
+          <p>{e.location}</p>
         )}
       </td>
       <td>
@@ -137,7 +137,7 @@ const TableContents = ({
             />
           </div>
         ) : (
-          e.dateApplied
+          <p>{e.dateApplied}</p>
         )}
       </td>
       <td>
@@ -154,7 +154,7 @@ const TableContents = ({
             />
           </div>
         ) : (
-          e.linkedAccounts
+          <p>{e.linkedAccounts}</p>
         )}
       </td>
       <td>
@@ -178,7 +178,21 @@ const TableContents = ({
             </select>
           </div>
         ) : (
-          e.status
+          <>
+            {e.status === 'Applied' && (
+              <p className='table-applied'>{e.status}</p>
+            )}
+            {e.status === 'Interview' && (
+              <p className='table-interview'>{e.status}</p>
+            )}
+            {e.status === 'Technical Exam' && (
+              <p className='table-technicalExam'>{e.status}</p>
+            )}
+            {e.status === 'Offer' && <p className='table-offer'>{e.status}</p>}
+            {e.status === 'Reject' && (
+              <p className='table-reject'>{e.status}</p>
+            )}
+          </>
         )}
       </td>
       <td className='table-action'>

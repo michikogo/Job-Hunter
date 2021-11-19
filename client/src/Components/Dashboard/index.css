@@ -137,7 +137,7 @@
 td,
 th {
   /* border: 1px solid #ddd; */
-  padding: 8px;
+  padding: 0rem 1rem;
 }
 tr:nth-child(even) {
   background-color: #f2f2f2;
@@ -152,7 +152,36 @@ th {
   background-color: #92898a;
   color: white;
 }
-
+.table-interview {
+  background: lightskyblue;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  border-radius: 5rem;
+}
+.table-offer {
+  background: lightgreen;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  border-radius: 5rem;
+}
+.table-reject {
+  background: lightsalmon;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  border-radius: 5rem;
+}
+.table-applied {
+  background: lightyellow;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  border-radius: 5rem;
+}
+.table-technicalExam {
+  background: lightcoral;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  border-radius: 5rem;
+}
 /**************/
 /* PAGINATION */
 /**************/
