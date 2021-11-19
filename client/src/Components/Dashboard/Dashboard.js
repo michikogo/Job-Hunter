@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import jwt from 'jsonwebtoken'
 import './index.css'
 
@@ -7,7 +6,6 @@ import Welcome from './FirstSection/Welcome'
 import Main from './SecondSection/Main'
 
 const Dashboard = () => {
-  const naviage = useNavigate()
   const [username, setUsername] = useState('')
   const [showModal, setShowModal] = useState(false)
   const [userData, setUserData] = useState([])
@@ -32,17 +30,18 @@ const Dashboard = () => {
 
   useEffect(() => {
     setLoading(true)
+
     const token = localStorage.getItem('token')
     if (token) {
       const user = jwt.decode(token)
       if (!user) {
         localStorage.removeItem('token')
-        naviage('/login')
+        window.location.href = '/login'
       } else {
         populateTable()
       }
     } else {
-      naviage('/login')
+      window.location.href = '/login'
     }
   }, [regenerate])
 

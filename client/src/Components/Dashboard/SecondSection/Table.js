@@ -164,6 +164,7 @@ const Table = ({
                       search.searchStatus.replace(/\s+/g, '').toLowerCase()
                     )
                 })
+                // TODO: Fix Sorting
                 .sort((firstelement, secondelement) => {
                   if (sortCol.sortCompanyName === 'asc') {
                     return firstelement.companyName.toLowerCase() >

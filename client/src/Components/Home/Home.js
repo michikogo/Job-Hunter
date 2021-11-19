@@ -7,11 +7,11 @@ const Home = () => {
   return (
     <div className='home-container'>
       <div>
-        <img src={abstract} className='home-abstract' />
+        <img src={abstract} className='home-abstract' alt='' />
         <h1 className='home-h1'>
           Organize and schedule your job applications with us!
         </h1>
-        <img src={homeImage} className='home-image' />
+        <img src={homeImage} className='home-image' alt='' />
       </div>
       <div></div>
       <div className='home-register-section'>
