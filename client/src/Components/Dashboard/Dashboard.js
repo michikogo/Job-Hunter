@@ -15,14 +15,11 @@ const Dashboard = () => {
   // Get data and username
   const populateTable = async () => {
     // const request = await fetch('http://localhost:8000/directory/contents', {
-    const request = await fetch(
-      "https://lit-journey-80521.herokuapp.com/directory/contents",
-      {
-        headers: {
-          "x-access-token": localStorage.getItem("token"),
-        },
-      }
-    );
+    const request = await fetch("/directory/contents", {
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+    });
     const data = await request.json();
     // console.log(data)
     setUserData(data.content);

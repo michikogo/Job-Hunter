@@ -57,25 +57,22 @@ const Modal = ({ handleClose }) => {
       !checkDateApplied &&
       !checkStatus
     ) {
-      const req = await fetch(
-        "https://lit-journey-80521.herokuapp.com/directory/contents",
-        {
-          // const req = await fetch('http://localhost:8000/directory/contents', {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-access-token": localStorage.getItem("token"),
-          },
-          body: JSON.stringify({
-            companyName,
-            role,
-            location,
-            dateApplied,
-            linkedAccounts,
-            status,
-          }),
-        }
-      );
+      const req = await fetch("/directory/contents", {
+        // const req = await fetch('http://localhost:8000/directory/contents', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-access-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          companyName,
+          role,
+          location,
+          dateApplied,
+          linkedAccounts,
+          status,
+        }),
+      });
       const data = await req.json();
       if (data.status === "ok") {
         handleClose();
