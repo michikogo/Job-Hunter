@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { abstract, homeImage } from "../../Assets";
 import HomeRegister from "./HomeRegister";
 import "./index.css";
 
 const Home = () => {
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      window.location.href = "/dashboard";
+    } else {
+      window.location.href = "/";
+    }
+  }, []);
   return (
     <div className="home-container">
       <div>

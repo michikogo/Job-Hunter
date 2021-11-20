@@ -45,14 +45,14 @@ const LoginForm = () => {
         email: loginInput.email,
         password: loginInput.password,
       };
-      // const response = await fetch('http://localhost:8000/user/login', {
-      const response = await fetch("/user/login", {
+      const response = await fetch("http://localhost:8000/user/login", {
+        // const response = await fetch("/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(createData),
-      });
+      }).catch(() => console.log("theres an error"));
       const data = await response.json();
       console.log(data);
 

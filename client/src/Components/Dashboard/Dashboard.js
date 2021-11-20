@@ -14,8 +14,8 @@ const Dashboard = () => {
 
   // Get data and username
   const populateTable = async () => {
-    // const request = await fetch('http://localhost:8000/directory/contents', {
-    const request = await fetch("/directory/contents", {
+    const request = await fetch("http://localhost:8000/directory/contents", {
+      // const request = await fetch("/directory/contents", {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },

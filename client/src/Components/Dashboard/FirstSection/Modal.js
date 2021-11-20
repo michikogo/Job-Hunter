@@ -57,8 +57,8 @@ const Modal = ({ handleClose }) => {
       !checkDateApplied &&
       !checkStatus
     ) {
-      const req = await fetch("/directory/contents", {
-        // const req = await fetch('http://localhost:8000/directory/contents', {
+      // const req = await fetch("/directory/contents", {
+      const req = await fetch("http://localhost:8000/directory/contents", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

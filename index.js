@@ -19,11 +19,7 @@ app.use(cors());
 const uri =
   process.env.MONGO_URI ||
   "mongodb+srv://admin:1234@userschema.dqeqq.mongodb.net/directory-schema?retryWrites=true&w=majority";
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(uri);
 
 mongoose.connection.once("open", () => {
   console.log("MongoDB connection established successfully");
