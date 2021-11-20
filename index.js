@@ -16,8 +16,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const MONGO_URI = process.env.MONGO_URI;
-mongoose.connect(MONGO_URI, {
+const uri =
+  process.env.MONGO_DB_URI ||
+  "mongodb+srv://admin:1234@userschema.dqeqq.mongodb.net/directory-schema?retryWrites=true&w=majority";
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
