@@ -47,7 +47,7 @@ const LoginForm = () => {
       };
       // const response = await fetch('http://localhost:8000/user/login', {
       const response = await fetch(
-        "http://lit-journey-80521.herokuapp.com/user/login",
+        "https://lit-journey-80521.herokuapp.com/user/login",
         {
           method: "POST",
           headers: {

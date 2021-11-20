@@ -94,7 +94,7 @@ const HomeRegister = () => {
       const createData = { name: name, email: email, password: password };
       // const response = await fetch("http://localhost:8000/user/register", {
       const response = await fetch(
-        "http://lit-journey-80521.herokuapp.com/user/register",
+        "https://lit-journey-80521.herokuapp.com/user/register",
         {
           method: "POST",
           headers: {

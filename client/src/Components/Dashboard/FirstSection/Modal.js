@@ -58,7 +58,7 @@ const Modal = ({ handleClose }) => {
       !checkStatus
     ) {
       const req = await fetch(
-        "http://lit-journey-80521.herokuapp.com/directory/contents",
+        "https://lit-journey-80521.herokuapp.com/directory/contents",
         {
           // const req = await fetch('http://localhost:8000/directory/contents', {
           method: "POST",

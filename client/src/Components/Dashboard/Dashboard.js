@@ -16,7 +16,7 @@ const Dashboard = () => {
   const populateTable = async () => {
     // const request = await fetch('http://localhost:8000/directory/contents', {
     const request = await fetch(
-      "http://lit-journey-80521.herokuapp.com/directory/contents",
+      "https://lit-journey-80521.herokuapp.com/directory/contents",
       {
         headers: {
           "x-access-token": localStorage.getItem("token"),
