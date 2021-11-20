@@ -90,13 +90,16 @@ const RegisterForm = () => {
       const createData = { name: name, email: email, password: password };
 
       // const response = await fetch("http://localhost:8000/user/register", {
-      const response = await fetch("/user/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(createData),
-      });
+      const response = await fetch(
+        "http://lit-journey-80521.herokuapp.com/user/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(createData),
+        }
+      );
       const data = await response.json();
       // console.log(data)
       if (data.status === "ok") {

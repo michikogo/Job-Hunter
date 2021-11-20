@@ -46,13 +46,16 @@ const LoginForm = () => {
         password: loginInput.password,
       };
       // const response = await fetch('http://localhost:8000/user/login', {
-      const response = await fetch("/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(createData),
-      });
+      const response = await fetch(
+        "http://lit-journey-80521.herokuapp.com/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(createData),
+        }
+      );
       const data = await response.json();
       console.log(data);
 
