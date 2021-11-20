@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 const uri =
-  process.env.MONGO_DB_URI ||
+  process.env.MONGO_URI ||
   "mongodb+srv://admin:1234@userschema.dqeqq.mongodb.net/directory-schema?retryWrites=true&w=majority";
 mongoose.connect(uri, {
   useNewUrlParser: true,
