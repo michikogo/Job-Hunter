@@ -2,6 +2,8 @@
 
 This web application is used to organize applicants' applications to jobs openings. Users can sign up and log in. When the user is logged in they can add applications, update and delete them. The update functionality will allow users to update the statuses of their applications from applied, interview, technical test, offer, and rejected. The application is responsive and it is written in `React.js` with `MongoDB Atlas`.
 
+_To know more about the components and its branches checkout JobHunter-Diagram.png_
+
 ## Installation
 
 To use the application make sure to do the following steps:
