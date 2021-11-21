@@ -17,7 +17,8 @@ To use the application make sure to do the following steps:
    ```
    b. client folder
    ```bash
-   cd client npm install
+   cd client
+   npm install
    ```
 
 ## Usage
