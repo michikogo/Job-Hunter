@@ -65,7 +65,6 @@ const TableContents = ({
   };
   // Let backend know that delete the id
   const handleDelete = (id) => {
-    // fetch(`/directory/contents/${id}`, {
     fetch(`http://localhost:8000/directory/contents/${id}`, {
       method: "DELETE",
     });
