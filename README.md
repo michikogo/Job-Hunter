@@ -22,7 +22,7 @@ To use the application make sure to do the following steps:
 
 ## Usage
 
-To be able to use [Job Hunter](https://lit-journey-80521.herokuapp.com) the following steps needs to be followed:
+To be able to use [Job Hunter](https://lit-journey-80521.herokuapp.com) the following steps needs to be followed, without following the steps only the front end will be running:
 
 1. Follow the steps in the installation
 2. Then start the server, this will start the server and run the backend
