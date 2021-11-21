@@ -6,11 +6,8 @@ import "./index.css";
 const Home = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       window.location.href = "/dashboard";
-    } else {
-      window.location.href = "/";
     }
   }, []);
   return (

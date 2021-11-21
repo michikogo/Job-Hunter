@@ -46,7 +46,6 @@ const TableContents = ({
       linkedAccounts: updateRow.updateLinkedAccounts,
       status: updateRow.updateStatus,
     };
-    // const req = await fetch(`http://localhost:8000/directory/contents/${id}`, {
     const req = await fetch(`/directory/contents/${id}`, {
       method: "PUT",
       headers: {
@@ -65,7 +64,6 @@ const TableContents = ({
   };
   // Let backend know that delete the id
   const handleDelete = (id) => {
-    // fetch(`/directory/contents/${id}`, {
     fetch(`http://localhost:8000/directory/contents/${id}`, {
       method: "DELETE",
     });
