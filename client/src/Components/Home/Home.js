@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
 import { abstract, homeImage } from "../../Assets";
+import jwt from "jsonwebtoken";
 import HomeRegister from "./HomeRegister";
 import "./index.css";
 
 const Home = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
-      window.location.href = "/dashboard";
-    } else {
-      window.location.href = "/";
+      const user = jwt.decode(token);
+      if (user) {
+        window.location.href = "/dashboard";
+      }
     }
   }, []);
+
   return (
     <div className="home-container">
       <div>
