@@ -12,9 +12,13 @@ To use the application make sure to do the following steps:
    ```
 2. Install packages for both to client folder and current folder
    a. current folder
-   `bash npm install `
+   ```bash
+   npm install
+   ```
    b. client folder
-   `bash cd client npm install `
+   ```bash
+   cd client npm install
+   ```
 
 ## Usage
 
